@@ -9,6 +9,8 @@ dotenv.config();
 const app = express();
 
 // middlewares
+app.use(express.json());
+
 app.use(
   cors({
     origin: [
@@ -28,7 +30,7 @@ app.get('/', (_, res) => {
 connectDB;
 
 // routes
-// app.request(`/api/v1`, rootRoutes);
+app.use(`/api/v1`, rootRoutes);
 
 const port = process.env.PORT || 3000;
 
