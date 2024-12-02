@@ -6,7 +6,7 @@ dotenv.config();
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL, {
-      dbName: 'ShopHoa',
+      dbName: 'HT-Smart-E-Commerce',
     });
     console.log('🚀 mongoDB connected');
   } catch (error) {
