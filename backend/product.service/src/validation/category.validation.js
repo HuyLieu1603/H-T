@@ -12,5 +12,5 @@ export const categoryValidation = joi.object({
       public_id: joi.string(),
     }),
   ),
-  is_deleted: joi.boolean().default(true),
+  is_deleted: joi.boolean().default(false),
 });

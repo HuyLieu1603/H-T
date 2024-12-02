@@ -11,7 +11,6 @@ export const wrapRequestHandler = (func) => {
         success: false,
       });
     }
-    next();
   };
 };
 
