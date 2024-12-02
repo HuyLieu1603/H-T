@@ -1,8 +1,9 @@
 import express from 'express';
+import categoryRoutes from '../routes/category.routes.js';
 
 const router = express.Router();
 
-const rootRoutes = [];
+const rootRoutes = [categoryRoutes];
 
 rootRoutes.map((route) => {
   router.use(route);
