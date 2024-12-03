@@ -1,20 +1,24 @@
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 import express from 'express';
+import swaggerUI from 'swagger-ui-express';
 import connectDB from './configs/connect-db.configs.js';
 import rootRoutes from './routes/index.js';
-import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
-// middlewares
+//middlewares
+app.use(express.json());
+
 app.use(
   cors({
     origin: [
       'http://localhost:3000',
       'http://localhost:4200',
       'http://localhost:3001',
+      'http://localhost:8080',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   }),
@@ -24,11 +28,11 @@ app.get('/', (_, res) => {
   res.send('hello world');
 });
 
-//connect DB
-connectDB;
+//conect db
+connectDB();
 
-// routes
-// app.request(`/api/v1`, rootRoutes);
+//routes
+app.use(`/api/v1`, rootRoutes);
 
 const port = process.env.PORT || 3000;
 
@@ -41,7 +45,7 @@ app.use(async (req, res) => {
     await func(req, res, next);
   } catch (error) {
     return res.status(500).json({
-      message: error.message,
+      messase: error.messase,
       success: false,
     });
   }
