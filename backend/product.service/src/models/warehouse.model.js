@@ -1,34 +1,32 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-const warehouseSchema = new mongoose.Model({
-  nameWarehouse: {
-    type: String,
-    required: true,
-  },
-  listProduct: [
-    {
-      idProduct: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'product',
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        default: 1,
-      },
+const warehouseSchema = new mongoose.Model(
+  {
+    nameWarehouse: {
+      type: String,
+      required: true,
     },
-  ],
-  listCategory: [
-    {
-      idCategory: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+    listCategory: [
+      {
+        idCategory: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Category',
+          required,
+        },
       },
+    ],
+    status: {
+      type: Boolean,
+      required: true,
     },
-  ],
-  status: {
-    type: Boolean,
-    required: true,
   },
-});
+  {
+    timestamps: true,
+    versionkey: false,
+  },
+);
+
+warehouseSchema.plugin(mongoosePaginate);
+const warehouse = mongoose.model('Warehouse', warehouseSchema);
+export default warehouse;
