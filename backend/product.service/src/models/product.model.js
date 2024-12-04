@@ -16,6 +16,11 @@ const productSchema = new mongoose.Schema(
       ref: 'Category',
       required: true,
     },
+    idWarehouse: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Warehouse',
+      required: true,
+    },
     desc: {
       type: String,
     },
