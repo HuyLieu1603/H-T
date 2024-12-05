@@ -1,6 +1,34 @@
+import { Query } from 'mongoose';
 import warehouse from '../models/warehouse.model.js';
 
 export const warehouseService = {
+  //option warehouse
+  optionWarehouse: async (params) => {
+    const { _limit = 10, _page = 1, q, populate, rest } = params;
+    let populateDefault = [
+      {
+        path: 'product',
+        select: '_id nameProduct quantity',
+      },
+    ];
+    let query = {};
+    if (q) {
+      query = {
+        $and: [
+          {
+            $or: [{ nameWarehouse: { $regax: new RegExp(q), $options: 'i' } }],
+          },
+        ],
+      };
+    }
+    const option = {
+      limit: parseInt(_limit),
+      page: parseInt(_page),
+      populate: populateDefault,
+      sort: { createdAt: -1 },
+    };
+    return { option, query };
+  },
   //create warehouse
   createWarehouse: async (body) => {
     return await warehouse.create(body);
@@ -22,7 +50,7 @@ export const warehouseService = {
     return warehouse.findByIdAndDelete(idWarehouse);
   },
   //update status warehouse
-  updateWarehouse: async (idWarehouse, status) => {
+  updateStatusWarehouse: async (idWarehouse, status) => {
     return await warehouse.findByIdAndUpdate(
       { _id: idWarehouse },
       { status: status },
@@ -34,4 +62,7 @@ export const warehouseService = {
     return await warehouse.findById(idWarehouse);
   },
   //fetch list warehouse (ADMIN)
+  fetchListWarehouse: async (optionWarehouse) => {
+    return await warehouse.find(optionWarehouse);
+  },
 };
