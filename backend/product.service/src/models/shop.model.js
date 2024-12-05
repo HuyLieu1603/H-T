@@ -6,9 +6,14 @@ const shopSchema = new mongoose.Schema(
     nameShop: {
       type: String,
       required: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 50,
     },
     desc: {
       type: String,
+      default: '',
+      maxlength: 500,
     },
     idWarehouse: {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,6 +22,7 @@ const shopSchema = new mongoose.Schema(
     },
     address: {
       type: String,
+      default: '',
     },
     Images: [
       {
