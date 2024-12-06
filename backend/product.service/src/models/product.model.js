@@ -12,8 +12,7 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     idCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
+      type: String,
       required: true,
     },
     desc: {
@@ -28,7 +27,9 @@ const productSchema = new mongoose.Schema(
           type: String,
         },
       },
+    
     ],
+
     status: {
       type: String,
       enum: ['Sẵn Sàng', 'Không sẵn sàng'],

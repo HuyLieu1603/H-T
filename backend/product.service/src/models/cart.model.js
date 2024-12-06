@@ -10,10 +10,14 @@ const cartSchema = new mongoose.Schema(
     list_product: [
       {
         id_product: {
-          type: String,
+          type: mongoose.Schema.Types.ObjectId, // Tham chiếu đến ObjectId
+          ref: 'Product',
+          require: true,
         },
         quantity: {
-          type: Number,
+          type: mongoose.Schema.Types.Number,
+          ref: 'Product',
+          require: true,
         },
         total: {
           type: Number,
