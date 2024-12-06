@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
 
-const warehouseSchema = new mongoose.Model(
+const warehouseSchema = new mongoose.Schema(
   {
     nameWarehouse: {
       type: String,
@@ -12,13 +12,15 @@ const warehouseSchema = new mongoose.Model(
         idCategory: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Category',
-          required,
+          required: true,
         },
+        default: [],
       },
     ],
     status: {
       type: Boolean,
       required: true,
+      default: true,
     },
   },
   {
@@ -28,5 +30,5 @@ const warehouseSchema = new mongoose.Model(
 );
 
 warehouseSchema.plugin(mongoosePaginate);
-const warehouse = mongoose.model('Warehouse', warehouseSchema);
+const warehouse = mongoose.model('Warehouse', warehouseSchema, 'Warehouse');
 export default warehouse;
