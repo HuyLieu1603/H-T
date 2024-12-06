@@ -62,7 +62,11 @@ export const warehouseService = {
     return await warehouse.findById(idWarehouse);
   },
   //fetch list warehouse (ADMIN)
-  fetchListWarehouse: async (optionWarehouse) => {
-    return await warehouse.find(optionWarehouse);
+  fetchListWarehouse: async () => {
+    return await warehouse.find();
+  },
+  //check exist name warehouse
+  checkExistName: async (nameWarehouse) => {
+    return warehouse.findOne({ nameWarehouse: nameWarehouse });
   },
 };
