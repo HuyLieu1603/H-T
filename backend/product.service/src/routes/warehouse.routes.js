@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from '../common/http-status.common.js';
+import { checkPermission } from '../middlewares/check-permission.middleware.js';
 import { warehouseController } from '../controllers/warehouse.controller.js';
 import { warehouseMiddleware } from '../middlewares/warehouse.middleware.js';
 import { verifyToken } from '../middlewares/verify-token.middleware.js';
@@ -11,7 +11,7 @@ const router = express.Router();
 router.post(
   '/warehouse',
   wrapRequestHandler(verifyToken),
-  //Thêm phân quyền ở đây
+  wrapRequestHandler(checkPermission),
   wrapRequestHandler(warehouseMiddleware),
   wrapRequestHandler(warehouseController.createWarehouse),
 );
@@ -19,7 +19,7 @@ router.post(
 router.put(
   '/warehouse/:idWarehouse',
   wrapRequestHandler(verifyToken),
-  //Thêm phân quyền ở đây
+  wrapRequestHandler(checkPermission),
   wrapRequestHandler(warehouseMiddleware),
   wrapRequestHandler(warehouseController.updateWarehouse),
 );
@@ -27,14 +27,14 @@ router.put(
 router.delete(
   '/warehouse/:idWarehouse',
   wrapRequestHandler(verifyToken),
-  //Thêm phân quyền ở đây
+  wrapRequestHandler(checkPermission),
   wrapRequestHandler(warehouseController.deleteWarehouse),
 );
 //fetch list warehouse
 router.get(
   '/warehouses',
   wrapRequestHandler(verifyToken),
-  //Thêm phân quyền ở đây
+  wrapRequestHandler(checkPermission),
   wrapRequestHandler(warehouseController.fetchListWarehouse),
 );
 //get detail warehouse by id
