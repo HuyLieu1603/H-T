@@ -3,7 +3,6 @@ import { HTTP_STATUS } from '../common/http-status.common.js';
 
 export const warehouseMiddleware = async (req, res, next) => {
   const body = req.body;
-  console.log(body);
   //validate
   const { error } = warehouseValidation.validate(body, { abortEarly: false });
   if (error) {

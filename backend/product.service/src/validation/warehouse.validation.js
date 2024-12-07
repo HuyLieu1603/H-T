@@ -1,5 +1,6 @@
 import joi from 'joi';
 import mongoose from 'mongoose';
+import { categoryService } from '../service/category.service.js';
 
 export const warehouseValidation = joi.object({
   nameWarehouse: joi.string().required().messages({
@@ -14,6 +15,8 @@ export const warehouseValidation = joi.object({
         .custom(async (value, helpers) => {
           if (!mongoose.Types.ObjectId.isValid(value))
             return helpers.message('Mã sản phẩm không hợp lệ');
+          if (!categoryService.getCategoryById(value))
+            return helpers.message('Mã loại không tồn tại!');
         }),
     }),
   ),
