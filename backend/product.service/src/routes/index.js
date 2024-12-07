@@ -1,14 +1,10 @@
 import express from 'express';
 import categoryRoutes from '../routes/category.routes.js';
-import cartRouteres from '../routes/cart.routes.js';
-import productRoutes from '../routes/product.routes.js';
+import warehouseRoutes from '../routes/warehouse.routes.js';
 
 const router = express.Router();
 
-//const rootRoutes = [categoryRoutes];
-const rootRoutes = [cartRouteres];
-
-//const rootRoutes = [productRoutes];
+const rootRoutes = [categoryRoutes, warehouseRoutes];
 
 rootRoutes.map((route) => {
   router.use(route);
