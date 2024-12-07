@@ -40,23 +40,32 @@ export const cartController = {
       });
     }
 
-    // Tạo giỏ hàng mới với các sản phẩm hợp lệ
-    const newCart = await cartService.createCartWithProducts(
-      body.id_user,
-      validProducts,
-    );
+    const id_user = body.id_user;
 
-    if (!newCart) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Tạo giỏ hàng không thành công!',
-        success: false,
+    // checkuserid
+    let userCart;
+    try {
+      userCart = await cartService.checkCartUserbyUserID(id_user);
+    } catch (error) {
+      // Nếu giỏ hàng không tồn tại, tạo giỏ hàng mới
+      const newCart = await cartService.createCartWithProducts(
+        id_user, // Sử dụng id_user đã lấy
+        validProducts,
+      );
+
+      // Kiểm tra việc tạo giỏ hàng
+      if (!newCart) {
+        return res.status(HTTP_STATUS.BAD_REQUEST).json({
+          message: 'Tạo giỏ hàng không thành công!',
+          success: false,
+        });
+      }
+
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Tạo giỏ hàng thành công!',
+        success: true,
+        data: newCart,
       });
     }
-
-    return res.status(HTTP_STATUS.OK).json({
-      message: 'Tạo giỏ hàng thành công!',
-      success: true,
-      data: newCart,
-    });
   },
 };

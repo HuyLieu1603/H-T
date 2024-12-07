@@ -17,7 +17,8 @@ const productSchema = new mongoose.Schema(
       default: 1,
     },
     idCategory: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
       required: true,
     },
     idWarehouse: {
@@ -27,6 +28,7 @@ const productSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
+      default: '',
     },
     Images: [
       {

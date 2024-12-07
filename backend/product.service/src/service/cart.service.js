@@ -4,29 +4,26 @@ import mongoose from 'mongoose';
 
 export const cartService = {
   createCartWithProducts: async (userId, products) => {
-    // trade string Id to ObjectId
     const productIds = products.map(
-      (item) => new mongoose.Types.ObjectId(item.id_product), // Sử dụng 'new'
+      (item) => new mongoose.Types.ObjectId(item.id_product),
     );
 
-    // Tìm tất cả sản phẩm có ID trong danh sách
     const existingProducts = await product.find({
       _id: { $in: productIds },
     });
 
     const productMap = {};
     existingProducts.forEach((product) => {
-      productMap[product._id.toString()] = product.price; // Sử dụng _id để tạo bản đồ
+      productMap[product._id.toString()] = product.price;
     });
-
-    // Tạo một giỏ hàng mới
+    console.log(productMap);
     const newCart = {
       id_user: userId,
       list_product: products.map((item) => {
-        const price = productMap[item.id_product]; // Lấy giá từ bản đồ
-        const quantity = item.quantity || 1; // Số lượng, mặc định là 1
-        const total = price ? price * quantity : 0; // Tính tổng giá
-
+        const price = productMap[item.id_product];
+        const quantity = item.quantity || 1;
+        const total = price ? price * quantity : 0;
+        console.log(price);
         return {
           id_product: item.id_product,
           quantity: quantity,
@@ -35,14 +32,14 @@ export const cartService = {
       }),
     };
 
-    return await cart.create(newCart); // Lưu giỏ hàng vào cơ sở dữ liệu
+    return await cart.create(newCart);
   },
 
-  getCartbyId_user: async (id_user) => {
-    const cart = await cart.findOne({ id_user: id_user });
-    if (!cart) {
+  checkCartUserbyUserID: async (id_user) => {
+    const userCart = await cart.findOne({ id_user: id_user });
+    if (!userCart) {
       throw new Error('Giỏ hàng không tồn tại');
     }
-    return cart;
+    return false;
   },
 };
