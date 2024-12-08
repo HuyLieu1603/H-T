@@ -13,5 +13,12 @@ export const categoryService = {
   getCategoryById: async (idCategory) => {
     return await category.findById(idCategory);
   },
-  //
+  //update category by id
+  updateCategory: async (idCategory, data) => {
+    return await category.findByIdAndUpdate(idCategory, data, { new: true });
+  },
+  //delete category
+  deleteCategory: async (idCategory) => {
+    return await category.findByIdAndDelete(idCategory);
+  },
 };

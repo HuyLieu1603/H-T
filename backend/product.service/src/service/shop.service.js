@@ -18,6 +18,15 @@ export const shopService = {
     return await shop.findByIdAndUpdate({ _id: idShop }, data, { new: true });
   },
   //update status shop
-
+  updateStatusShop: async (idShop, status) => {
+    return await shop.findByIdAndUpdate(
+      { _id: idShop },
+      { status: status },
+      { new: true },
+    );
+  },
   //delete shop
+  deleteShop: async (idShop) => {
+    return await shop.findByIdAndDelete(idShop);
+  },
 };
