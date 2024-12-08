@@ -68,4 +68,35 @@ export const cartController = {
       });
     }
   },
+
+  addProductToCart: async (req, res) => {
+    const { id_user, product } = req.body;
+    const productt = req.body.id_product;
+    console.log(product.id_product);
+    // Tìm giỏ hàng của người dùng
+    let userCart;
+    try {
+      userCart = await cartService.checkCartUserbyUserID(id_user);
+    } catch (error) {
+      return res.status(HTTP_STATUS.NOT_FOUND).json({
+        message: 'Giỏ hàng không tồn tại.',
+        success: false,
+      });
+    }
+
+    // updatecart
+    try {
+      const updatedCart = await cartService.addProductToCart(userCart, product);
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Thêm sản phẩm vào giỏ hàng thành công!',
+        success: true,
+        data: updatedCart,
+      });
+    } catch (error) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: error.message,
+        success: false,
+      });
+    }
+  },
 };
