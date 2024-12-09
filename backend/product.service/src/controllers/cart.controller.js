@@ -20,7 +20,7 @@ export const cartController = {
     const nonExistentIds = productIds.filter((id) => !existingIds.includes(id));
 
     // Lưu danh sách sản phẩm hợp lệ vào req.validProducts
-    req.validProducts = body.list_product.filter((item) =>
+    req.validProducts = body.list_product.filter((item) => 
       existingIds.includes(item.id_product),
     );
 
