@@ -17,14 +17,14 @@ router.get(
 );
 // GET : fetch list category
 router.get(
-  '/categorys',
+  '/list-category',
   wrapRequestHandler(categoryController.fetchListCategory),
 );
 //PUT: update category
 router.put(
   '/category/:idCategory',
   wrapRequestHandler(categoryMiddleware),
-  wrapRequestHandler(categoryController.fetchListCategory),
+  wrapRequestHandler(categoryController.updateCategory),
 );
 //DELETE: delete category
 router.delete(

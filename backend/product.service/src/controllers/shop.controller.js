@@ -64,6 +64,22 @@ export const shopController = {
       success: true,
     });
   },
+  //update status shop
+  updateStatusShop: async (req, res) => {
+    const { status } = req.body;
+    const { idShop } = req.params;
+    //update status
+    const result = await shopService.updateStatusShop(idShop, status);
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Cập nhật trạng thái thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Cập nhật trạng thái thành công!',
+      success: true,
+    });
+  },
   //Delete shop
   deleteShopById: async (req, res) => {
     const { idShop } = req.params;
