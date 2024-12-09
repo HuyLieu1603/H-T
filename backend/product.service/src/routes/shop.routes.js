@@ -13,4 +13,23 @@ router.post(
   wrapRequestHandler(shopController.createShop),
 );
 
-router.get('/shop', wrapRequestHandler(shopController.getShopById));
+router.get('/shop/:idShop', wrapRequestHandler(shopController.getShopById));
+
+//fetch list shop
+router.get('/list-shop', wrapRequestHandler(shopController.fetchListShop));
+
+//update shop by id
+router.put('/shop/:idShop', wrapRequestHandler(shopController.updateShopById));
+
+//update status shop by id
+router.put(
+  '/shop-status/:idShop',
+  wrapRequestHandler(shopController.updateStatusShop),
+);
+
+//delete shop
+router.delete(
+  '/shop/:idShop',
+  wrapRequestHandler(shopController.deleteShopById),
+);
+export default router;

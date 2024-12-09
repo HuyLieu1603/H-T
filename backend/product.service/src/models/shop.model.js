@@ -12,13 +12,7 @@ const shopSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      default: '',
       maxlength: 500,
-    },
-    idWarehouse: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'warehouse',
-      required: true,
     },
     address: {
       type: String,
