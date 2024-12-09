@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\H-T\\backend\\user.service\\user\\user.csproj": {}
+    "C:\\Liu\\H-T-Smart-E-Commerce\\backend\\user.service\\user\\user.csproj": {}
   },
   "projects": {
-    "D:\\H-T\\backend\\user.service\\user\\user.csproj": {
+    "C:\\Liu\\H-T-Smart-E-Commerce\\backend\\user.service\\user\\user.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\H-T\\backend\\user.service\\user\\user.csproj",
+        "projectUniqueName": "C:\\Liu\\H-T-Smart-E-Commerce\\backend\\user.service\\user\\user.csproj",
         "projectName": "user",
-        "projectPath": "D:\\H-T\\backend\\user.service\\user\\user.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\H-T\\backend\\user.service\\user\\obj\\",
+        "projectPath": "C:\\Liu\\H-T-Smart-E-Commerce\\backend\\user.service\\user\\user.csproj",
+        "packagesPath": "C:\\Users\\PHONG VAN PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Liu\\H-T-Smart-E-Commerce\\backend\\user.service\\user\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PHONG VAN PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

@@ -7,6 +7,11 @@ const warehouseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    idShop: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'shop',
+      required: true,
+    },
     listCategory: [
       {
         idCategory: {
