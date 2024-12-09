@@ -14,4 +14,16 @@ export const productService = {
   getProductById: async (idProduct) => {
     return await product.findById(idProduct);
   },
+  // update product by id
+  updateProduct: async (idProduct, data) => {
+    return await product.findByIdAndUpdate(idProduct, data, { new: true });
+  },
+
+  // delete product
+  deleteProduct : async (idProduct) =>{
+   return await product.findByIdAndDelete(idProduct);
+  }
+
+
+
 };

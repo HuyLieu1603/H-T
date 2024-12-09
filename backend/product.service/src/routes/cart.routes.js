@@ -4,12 +4,13 @@ import { wrapRequestHandler } from '../utils/handle.util.js';
 import express from 'express';
 
 const router = express.Router();
+// creater cart
 router.post(
   '/cart',
   wrapRequestHandler(cartMiddleware),
   wrapRequestHandler(cartController.createCart),
 );
-
+// add product for cart
 router.post('/cart/add', wrapRequestHandler(cartController.addProductToCart));
 
 export default router;
