@@ -1,11 +1,22 @@
 import joi from 'joi';
 import mongoose from 'mongoose';
+import { categoryService } from '../service/category.service.js';
+import { shopService } from '../service/shop.service.js';
 
 export const warehouseValidation = joi.object({
   nameWarehouse: joi.string().required().messages({
     'string.empty': 'Tên kho không được để trống',
     'any.required': 'Tên kho không được để trống',
   }),
+  idShop: joi
+    .string()
+    .required()
+    .custom((value, helper) => {
+      if (!mongoose.Types.ObjectId.isValid(value))
+        return helper.message('Mã cửa hàng không hợp lệ');
+      if (!shopService.getShopById(value))
+        return helper.message('Mã cửa hàng không tồn tại');
+    }),
   listCategory: joi.array().items(
     joi.object({
       idCategory: joi
@@ -14,6 +25,8 @@ export const warehouseValidation = joi.object({
         .custom(async (value, helpers) => {
           if (!mongoose.Types.ObjectId.isValid(value))
             return helpers.message('Mã sản phẩm không hợp lệ');
+          if (!categoryService.getCategoryById(value))
+            return helpers.message('Mã loại không tồn tại!');
         }),
     }),
   ),

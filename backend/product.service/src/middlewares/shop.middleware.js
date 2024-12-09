@@ -12,4 +12,5 @@ export const shopMiddleware = (req, res, next) => {
       success: false,
     });
   }
+  next();
 };
