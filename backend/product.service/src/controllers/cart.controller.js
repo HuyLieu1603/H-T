@@ -20,7 +20,7 @@ export const cartController = {
     const nonExistentIds = productIds.filter((id) => !existingIds.includes(id));
 
     // Lưu danh sách sản phẩm hợp lệ vào req.validProducts
-    req.validProducts = body.list_product.filter((item) => 
+    req.validProducts = body.list_product.filter((item) =>
       existingIds.includes(item.id_product),
     );
 
@@ -71,8 +71,14 @@ export const cartController = {
 
   addProductToCart: async (req, res) => {
     const { id_user, product } = req.body;
-    const productt = req.body.id_product;
-    console.log(product.id_product);
+    // Kiểm tra xem product có dữ liệu không
+    if (!product || product.length === 0) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Không có sản phẩm nào để thêm.',
+        success: false,
+      });
+    }
+
     // Tìm giỏ hàng của người dùng
     let userCart;
     try {
@@ -86,7 +92,10 @@ export const cartController = {
 
     // updatecart
     try {
-      const updatedCart = await cartService.addProductToCart(userCart, product);
+      const idcart = await cartService.getIdCartByIduser(userCart);
+
+      const updatedCart = await cartService.addProductToCart(idcart, product);
+
       return res.status(HTTP_STATUS.OK).json({
         message: 'Thêm sản phẩm vào giỏ hàng thành công!',
         success: true,

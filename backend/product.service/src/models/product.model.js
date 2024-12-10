@@ -39,10 +39,9 @@ const productSchema = new mongoose.Schema(
           type: String,
         },
       },
-    
     ],
 
-    status: {
+    productStatus: {
       type: String,
       enum: ['Sẵn Sàng', 'Không sẵn sàng'],
       default: 'Sẵn sàng',

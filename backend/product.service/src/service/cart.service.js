@@ -36,28 +36,39 @@ export const cartService = {
   },
 
   checkCartUserbyUserID: async (id_user) => {
-    const userCart = await cart.findOne({ id_user: id_user });
-    if (!userCart) {
+    const idCart = await cart.findOne({ id_user: id_user });
+    if (!idCart) {
       throw new Error('Giỏ hàng không tồn tại');
     }
-    return userCart;
+    return idCart.id_user;
+  },
+  // get category by id
+  getCartById: async (idcart) => {
+    return await cart.findById(idcart);
+  },
+  //delete category
+  deleteCart: async (idCart) => {
+    return await cart.findByIdAndDelete(idCart);
+  },
+  getIdCartByIduser: async (id_user) => {
+    const rscart = await cart.findOne({ id_user: id_user });
+    return rscart._id;
   },
 
-  addProductToCart: async (userCart, productOfUser) => {
-    // Kiểm tra xem productOfUser có chứa id_product hay không
-    if (!productOfUser || !productOfUser.id_product) {
-      throw new Error('Mã sản phẩm là bắt buộc.');
-    }
-
+  addProductToCart: async (idCart, productOfUser) => {
+    const idproduct = productOfUser[0].id_product;
+    console.log(idproduct);
+    //get cart by idart
+    const tempcart = await cart.findById(idCart);
+    console.log(tempcart);
     // Tìm sản phẩm trong giỏ hàng
-    const existingCartItem = userCart.list_product.find(
-      (item) =>
-        item.id_product.toString() === productOfUser.id_product.toString(),
+    const existingCartItem = tempcart.list_product.find(
+      (item) => item.id_product.toString() === idproduct.toString(),
     );
-    const quantity = productOfUser.quantity || 1;
+    const quantity = productOfUser[0].quantity || 1;
 
     // Lấy giá sản phẩm từ cơ sở dữ liệu
-    const existingProduct = await product.findById(productOfUser.id_product);
+    const existingProduct = await product.findById(idproduct);
     if (!existingProduct) {
       throw new Error('Sản phẩm không tồn tại');
     }
@@ -70,15 +81,15 @@ export const cartService = {
       existingCartItem.total = price * existingCartItem.quantity;
     } else {
       // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm mới
-      userCart.list_product.push({
-        id_product: productOfUser.id_product,
-        quantity: quantity,
-        total: price * quantity,
+      tempcart.list_product.push({
+        id_product: idproduct,
+        quantity: productOfUser[0].quantity,
+        total: price * productOfUser[0].quantity,
       });
     }
 
     // Lưu giỏ hàng đã cập nhật
-    await userCart.save();
-    return userCart; // Trả về giỏ hàng đã cập nhật
+    await tempcart.save();
+    return tempcart; // Trả về giỏ hàng đã cập nhật
   },
 };

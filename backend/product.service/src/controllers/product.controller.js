@@ -6,11 +6,10 @@ export const productController = {
     const body = req.body;
     //create
     const newProduct = await productService.createProduct(body);
-    if (!newProduct)
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Tạo sản phẩm thất bại',
-        success: false,
-      });
+    if (newProduct.status) {
+      // if status not Ok return error
+      return res.status(newProduct.status).json(newProduct.body);
+    }
     return res.status(HTTP_STATUS.OK).json({
       message: 'Tạo sản phẩm thành công!',
       success: true,

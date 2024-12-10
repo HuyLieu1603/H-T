@@ -13,4 +13,6 @@ router.post(
 // add product for cart
 router.post('/cart/add', wrapRequestHandler(cartController.addProductToCart));
 
+
+
 export default router;

@@ -34,7 +34,7 @@ export const productService = {
         idWarehouse: warehouseId,
         desc: data.desc,
         Images: data.Images || [], // Đảm bảo Images là mảng
-        status: data.status,
+        productStatus: data.productStatus,
         is_deleted: data.is_deleted,
       };
 

@@ -37,6 +37,9 @@ export const productValidation = joi.object({
       public_id: joi.string(),
     }),
   ),
-  status: joi.string().valid('Sẵn Sàng', 'Không sẵn sàng').default('Sẵn Sàng'),
+  productStatus: joi
+    .string()
+    .valid('Sẵn Sàng', 'Không sẵn sàng')
+    .default('Sẵn Sàng'),
   is_deleted: joi.boolean().default(false),
 });
