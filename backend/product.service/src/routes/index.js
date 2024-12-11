@@ -6,7 +6,7 @@ import produtRoutes from '../routes/product.routes.js';
 import cartRoutes from '../routes/cart.routes.js';
 const router = express.Router();
 
-const rootRoutes = [cartRoutes];
+const rootRoutes = [cartRoutes, produtRoutes, categoryRoutes];
 rootRoutes.map((route) => {
   router.use(route);
 });

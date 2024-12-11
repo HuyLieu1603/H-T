@@ -80,7 +80,7 @@ export const cartService = {
       existingCartItem.quantity += quantity;
       existingCartItem.total = price * existingCartItem.quantity;
     } else {
-      // Nếu sản phẩm chưa có trong giỏ hàng, thêm sản phẩm mới
+      // Nếu s ản phẩm chưa có trong giỏ hàng, thêm sản phẩm mới
       tempcart.list_product.push({
         id_product: idproduct,
         quantity: productOfUser[0].quantity,

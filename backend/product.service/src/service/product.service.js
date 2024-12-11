@@ -67,6 +67,9 @@ export const productService = {
 
   // delete product
   deleteProduct: async (idProduct) => {
-    return await product.findByIdAndDelete(idProduct);
+    const tempproduct = await product.findById(idProduct);
+    tempproduct.is_deleted = true;
+    await tempproduct.save();
+    return tempproduct;
   },
 };

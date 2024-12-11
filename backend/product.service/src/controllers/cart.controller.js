@@ -74,7 +74,7 @@ export const cartController = {
     // Kiểm tra xem product có dữ liệu không
     if (!product || product.length === 0) {
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Không có sản phẩm nào để thêm.',
+        message: 'Không có sản phẩm nào để thêm',
         success: false,
       });
     }

@@ -1,0 +1,134 @@
+[
+  {
+    "nameCategory": "Điện thoại di động",
+    "desc": "Các loại điện thoại di động mới nhất.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Máy tính xách tay",
+    "desc": "Máy tính xách tay cho công việc và học tập.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Máy tính để bàn",
+    "desc": "Máy tính để bàn cho chơi game và làm việc.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Phụ kiện điện thoại",
+    "desc": "Các loại phụ kiện cho điện thoại di động.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Thiết bị chơi game",
+    "desc": "Các thiết bị chơi game như console và phụ kiện.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Âm thanh",
+    "desc": "Loa, tai nghe và thiết bị âm thanh khác.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Camera",
+    "desc": "Máy ảnh và phụ kiện chụp ảnh.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Thiết bị gia dụng",
+    "desc": "Các thiết bị gia dụng thông minh.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Thời trang",
+    "desc": "Quần áo và phụ kiện thời trang.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Sức khỏe & Làm đẹp",
+    "desc": "Sản phẩm chăm sóc sức khỏe và làm đẹp.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Thể thao",
+    "desc": "Thiết bị và phụ kiện thể thao.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Hàng điện tử",
+    "desc": "Các sản phẩm điện tử tiêu dùng.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Đồ chơi",
+    "desc": "Đồ chơi cho trẻ em và người lớn.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Nhà cửa",
+    "desc": "Nội thất và trang trí cho ngôi nhà.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Sách",
+    "desc": "Sách và tài liệu học tập.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Thú cưng",
+    "desc": "Sản phẩm cho thú cưng.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Du lịch",
+    "desc": "Đồ dùng và phụ kiện cho du lịch.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Xe cộ",
+    "desc": "Phụ tùng và phụ kiện cho xe hơi.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Giáo dục",
+    "desc": "Sản phẩm và dịch vụ giáo dục.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Công nghệ",
+    "desc": "Sản phẩm công nghệ mới nhất.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Giải trí",
+    "desc": "Sản phẩm giải trí và sở thích.",
+    "is_deleted": false,
+    "Images": []
+  },
+  {
+    "nameCategory": "Mẹ và bé",
+    "desc": "Sản phẩm cho mẹ và trẻ em.",
+    "is_deleted": false,
+    "Images": []
+  }
+]
