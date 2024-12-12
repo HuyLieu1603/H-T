@@ -9,30 +9,26 @@ const cartSchema = new mongoose.Schema(
       required: true,
     },
 
-    list_product: [
-      {
-        id_product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'product',
-          required: true,
-        },
-        quantity: {
-          type: Number,
-          required: true,
-          default: 1,
-        },
-        total: {
-          type: Number,
-          required: true,
-          default: 0,
-        },
+  list_product: [
+    {
+      id_product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'product',
+        required: true,
       },
-    ],
+      quantity: {
+        type: Number,
+        required: true,
+        default: 1,
+      },
+    },
+  ],
+  total: {
+    type: Number,
+    required: true,
+    default: 0,
   },
-  {
-    collection: 'cart',
-  },
-);
+});
 
 cartSchema.plugin(mongoosePaginate);
 const cart = mongoose.model('cart', cartSchema);
