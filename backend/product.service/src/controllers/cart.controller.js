@@ -108,4 +108,45 @@ export const cartController = {
       });
     }
   },
+  updateProductQuantityInCart: async (req, res) => {
+    const { idCart, product } = req.body;
+
+    // validation
+    if (!idCart || !product || product.length === 0) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Thiếu tham số cần thiết.',
+        success: false,
+      });
+    }
+
+    // get only one the first id in array
+    const { id_product: idProduct, quantity: newQuantity } = product[0];
+
+    // check quantity
+    if (typeof newQuantity !== 'number') {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Số lượng không hợp lệ.',
+        success: false,
+      });
+    }
+
+    try {
+      const updatedCart = await cartService.updateProductQuantityInCart(
+        idCart,
+        idProduct,
+        newQuantity,
+      );
+
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Cập nhật số lượng sản phẩm thành công!',
+        success: true,
+        data: updatedCart,
+      });
+    } catch (error) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: error.message,
+        success: false,
+      });
+    }
+  },
 };

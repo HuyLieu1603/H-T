@@ -12,7 +12,10 @@ router.post(
 );
 // add product for cart
 router.post('/cart/add', wrapRequestHandler(cartController.addProductToCart));
-
-
+// update quantity
+router.put(
+  '/cart/update-quantity',
+  wrapRequestHandler(cartController.updateProductQuantityInCart),
+);
 
 export default router;

@@ -1,180 +1,372 @@
-[
-  {
-    "nameWarehouse": "Kho Chứa 1",
-    "idShop": "67552a608c08ba2f599b0b19",
-    "listCategory": [
-      { "idCategory": "67512ff7da0ee097e8fd9276" },
-      { "idCategory": "67552cbf6336678026eb76bc" }
-    ],
-    "status": true
+[{
+  "_id": {
+    "$oid": "67552c01b88ae5bacd6e610c"
   },
-  {
-    "nameWarehouse": "Kho Chứa 2",
-    "idShop": "67592abf24eb1b614e43f196",
-    "listCategory": [
-      { "idCategory": "67552cca6336678026eb76be" },
-      { "idCategory": "675924a124eb1b614e43f180" },
-      { "idCategory": "675924a124eb1b614e43f184" }
-    ],
-    "status": true
+  "nameWarehouse": "HT-Warehouse",
+  "idShop": {
+    "$oid": "67552a608c08ba2f599b0b19"
   },
-  {
-    "nameWarehouse": "Kho Chứa 3",
-    "idShop": "67592abf24eb1b614e43f197",
-    "listCategory": [
-      { "idCategory": "675918bf24eb1b614e43f16b" },
-      { "idCategory": "675924a124eb1b614e43f181" }
-    ],
-    "status": true
+  "listCategory": [],
+  "status": true,
+  "createdAt": {
+    "$date": "2024-12-08T05:17:53.683Z"
   },
-  {
-    "nameWarehouse": "Kho Chứa 4",
-    "idShop": "67592abf24eb1b614e43f198",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f182" },
-      { "idCategory": "675924a124eb1b614e43f183" }
-    ],
-    "status": false
+  "updatedAt": {
+    "$date": "2024-12-08T05:17:53.683Z"
   },
-  {
-    "nameWarehouse": "Kho Chứa 5",
-    "idShop": "67592abf24eb1b614e43f199",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f186" },
-      { "idCategory": "675924a124eb1b614e43f187" }
-    ],
-    "status": true
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c10d"
   },
-  {
-    "nameWarehouse": "Kho Chứa 6",
-    "idShop": "67592abf24eb1b614e43f19a",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f188" },
-      { "idCategory": "675924a124eb1b614e43f189" },
-      { "idCategory": "675924a124eb1b614e43f190" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 1",
+  "idShop": {
+    "$oid": "67552a608c08ba2f599b0b19"
   },
-  {
-    "nameWarehouse": "Kho Chứa 7",
-    "idShop": "67592abf24eb1b614e43f19b",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f191" }
-    ],
-    "status": false
+  "listCategory": [
+    {
+      "idCategory": "67512ff7da0ee097e8fd9276"
+    },
+    {
+      "idCategory": "67552cbf6336678026eb76bc"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c10e"
   },
-  {
-    "nameWarehouse": "Kho Chứa 8",
-    "idShop": "67592abf24eb1b614e43f19c",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f192" },
-      { "idCategory": "675924a124eb1b614e43f193" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 2",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f196"
   },
-  {
-    "nameWarehouse": "Kho Chứa 9",
-    "idShop": "67592abf24eb1b614e43f19d",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f194" }
-    ],
-    "status": true
+  "listCategory": [
+    {
+      "idCategory": "67552cca6336678026eb76be"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f180"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f184"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c10f"
   },
-  {
-    "nameWarehouse": "Kho Chứa 10",
-    "idShop": "67592abf24eb1b614e43f19e",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f180" },
-      { "idCategory": "67552cbf6336678026eb76bc" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 3",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f197"
   },
-  {
-    "nameWarehouse": "Kho Chứa 11",
-    "idShop": "67592abf24eb1b614e43f19f",
-    "listCategory": [
-      { "idCategory": "67512ff7da0ee097e8fd9276" },
-      { "idCategory": "67552cca6336678026eb76be" }
-    ],
-    "status": false
+  "listCategory": [
+    {
+      "idCategory": "675918bf24eb1b614e43f16b"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f181"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c110"
   },
-  {
-    "nameWarehouse": "Kho Chứa 12",
-    "idShop": "67592abf24eb1b614e43f1a0",
-    "listCategory": [
-      { "idCategory": "675918bf24eb1b614e43f16b" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 4",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f198"
   },
-  {
-    "nameWarehouse": "Kho Chứa 13",
-    "idShop": "67592abf24eb1b614e43f1a1",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f182" },
-      { "idCategory": "675924a124eb1b614e43f183" }
-    ],
-    "status": true
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f182"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f183"
+    }
+  ],
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c111"
   },
-  {
-    "nameWarehouse": "Kho Chứa 14",
-    "idShop": "67592abf24eb1b614e43f1a2",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f184" },
-      { "idCategory": "675924a124eb1b614e43f185" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 5",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f199"
   },
-  {
-    "nameWarehouse": "Kho Chứa 15",
-    "idShop": "67592abf24eb1b614e43f1a3",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f186" }
-    ],
-    "status": false
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f186"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f187"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c112"
   },
-  {
-    "nameWarehouse": "Kho Chứa 16",
-    "idShop": "67592abf24eb1b614e43f1a4",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f187" },
-      { "idCategory": "675924a124eb1b614e43f188" }
-    ],
-    "status": true
+  "nameWarehouse": "Kho Chứa 6",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19a"
   },
-  {
-    "nameWarehouse": "Kho Chứa 17",
-    "idShop": "67592abf24eb1b614e43f1a5",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f189" },
-      { "idCategory": "675924a124eb1b614e43f190" }
-    ],
-    "status": true
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f188"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f189"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f190"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c113"
   },
-  {
-    "nameWarehouse": "Kho Chứa 18",
-    "idShop": "67592abf24eb1b614e43f1a6",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f191" }
-    ],
-    "status": false
+  "nameWarehouse": "Kho Chứa 7",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19b"
   },
-  {
-    "nameWarehouse": "Kho Chứa 19",
-    "idShop": "67592abf24eb1b614e43f1a7",
-    "listCategory": [
-      { "idCategory": "675924a124eb1b614e43f192" },
-      { "idCategory": "675924a124eb1b614e43f193" },
-      { "idCategory": "675924a124eb1b614e43f194" }
-    ],
-    "status": true
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f191"
+    }
+  ],
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c114"
   },
-  {
-    "nameWarehouse": "Kho Chứa 20",
-    "idShop": "67592abf24eb1b614e43f1a8",
-    "listCategory": [
-      { "idCategory": "67552cbf6336678026eb76bc" },
-      { "idCategory": "67512ff7da0ee097e8fd9276" }
-    ],
-    "status": true
-  }
-]
+  "nameWarehouse": "Kho Chứa 8",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19c"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f192"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f193"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c115"
+  },
+  "nameWarehouse": "Kho Chứa 9",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19d"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f194"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c116"
+  },
+  "nameWarehouse": "Kho Chứa 10",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19e"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f180"
+    },
+    {
+      "idCategory": "67552cbf6336678026eb76bc"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c117"
+  },
+  "nameWarehouse": "Kho Chứa 11",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f19f"
+  },
+  "listCategory": [
+    {
+      "idCategory": "67512ff7da0ee097e8fd9276"
+    },
+    {
+      "idCategory": "67552cca6336678026eb76be"
+    }
+  ],
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c118"
+  },
+  "nameWarehouse": "Kho Chứa 12",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a0"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675918bf24eb1b614e43f16b"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c119"
+  },
+  "nameWarehouse": "Kho Chứa 13",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a1"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f182"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f183"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11a"
+  },
+  "nameWarehouse": "Kho Chứa 14",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a2"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f184"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f185"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11b"
+  },
+  "nameWarehouse": "Kho Chứa 15",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a3"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f186"
+    }
+  ],
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11c"
+  },
+  "nameWarehouse": "Kho Chứa 16",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a4"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f187"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f188"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11d"
+  },
+  "nameWarehouse": "Kho Chứa 17",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a5"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f189"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f190"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11e"
+  },
+  "nameWarehouse": "Kho Chứa 18",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a6"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f191"
+    }
+  ],
+  "status": false
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c11f"
+  },
+  "nameWarehouse": "Kho Chứa 19",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a7"
+  },
+  "listCategory": [
+    {
+      "idCategory": "675924a124eb1b614e43f192"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f193"
+    },
+    {
+      "idCategory": "675924a124eb1b614e43f194"
+    }
+  ],
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "675a730d53aea9c45690c120"
+  },
+  "nameWarehouse": "Kho Chứa 20",
+  "idShop": {
+    "$oid": "67592abf24eb1b614e43f1a8"
+  },
+  "listCategory": [
+    {
+      "idCategory": "67552cbf6336678026eb76bc"
+    },
+    {
+      "idCategory": "67512ff7da0ee097e8fd9276"
+    }
+  ],
+  "status": true
+}]

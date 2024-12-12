@@ -15,7 +15,7 @@ export const cartValidation = joi.object({
             return helper.message('Mã sản phẩm không tồn tại');
         }),
       quantity: joi.number(),
-      total: joi.number(),
     }),
   ),
+  total: joi.number(),
 });
