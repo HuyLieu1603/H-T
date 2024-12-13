@@ -17,5 +17,9 @@ router.put(
   '/cart/update-quantity',
   wrapRequestHandler(cartController.updateProductQuantityInCart),
 );
+router.delete(
+  '/cart',
+  wrapRequestHandler(cartController.deleteProductFromCart),
+);
 
 export default router;

@@ -149,4 +149,46 @@ export const cartController = {
       });
     }
   },
+  deleteProductFromCart: async (req, res) => {
+    const { idcart, idProduct } = req.body;
+    if (!idcart || !idProduct) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Thiếu tham số cần thiết.',
+        success: false,
+      });
+    }
+
+    const cartupdate = await cartService.updateProductQuantityInCart(
+      idcart,
+      idProduct,
+      0,
+    );
+    // Kiểm tra tham số cần thiết
+
+    try {
+      // Gọi dịch vụ để xóa sản phẩm khỏi giỏ hàng
+      const updatedCart = await cartService.deleteProductFromCart(
+        idcart,
+        idProduct,
+      );
+
+      if (!updatedCart) {
+        return res.status(HTTP_STATUS.NOT_FOUND).json({
+          message: 'Không tìm thấy giỏ hàng hoặc sản phẩm để xóa.',
+          success: false,
+        });
+      }
+
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Xóa sản phẩm khỏi giỏ hàng thành công!',
+        success: true,
+        data: updatedCart,
+      });
+    } catch (error) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: error.message,
+        success: false,
+      });
+    }
+  },
 };

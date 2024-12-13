@@ -72,4 +72,8 @@ export const productService = {
     await tempproduct.save();
     return tempproduct;
   },
+
+  fetchListProductbyCategory: async (idCategory) => {
+    return await product.find({ idCategory: idCategory, is_deleted: false });
+  },
 };

@@ -30,5 +30,10 @@ router.delete(
   '/product/:idProduct',
   wrapRequestHandler(productController.deleteProduct),
 );
+//Get : fetcg list product by idCategory
+router.get(
+  '/product/:idcategory',
+  wrapRequestHandler(productController.getProductByIdCategory),
+);
 
 export default router;

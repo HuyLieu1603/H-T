@@ -1,4 +1,5 @@
 import { HTTP_STATUS } from '../common/http-status.common.js';
+import product from '../models/product.model.js';
 import { productService } from '../service/product.service.js';
 
 export const productController = {
@@ -76,6 +77,22 @@ export const productController = {
     return res.status(HTTP_STATUS.OK).json({
       message: 'Xóa  sản phẩm thành công!',
       success: true,
+    });
+  },
+  // get listproducts by idcategory
+  getProductByIdCategory: async (req, res) => {
+    const { idcategory } = req.params;
+    console.log(idcategory);
+    const result = await productService.fetchListProductbyCategory(idcategory);
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Lỗi mã loại hàng!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Lấy sản phẩm thành công',
+      success: true,
+      data: result,
     });
   },
 };

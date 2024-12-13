@@ -156,5 +156,29 @@ export const cartService = {
     // Lưu giỏ hàng đã cập nhật
     await tempcart.save(); // Lưu thay đổi vào cơ sở dữ liệu
     return tempcart; // Trả về giỏ hàng đã cập nhật
-  },  
+  },
+  deleteProductFromCart: async function (idCart, idProduct) {
+    // create tempcart to handle
+    const tempcart = await cart.findById(idCart);
+    if (!tempcart) {
+      throw new Error('Giỏ hàng không tồn tại.');
+    }
+
+    // Tìm vị trí sản phẩm trong giỏ hàng
+    const productIndex = tempcart.list_product.findIndex(
+      (item) => item.id_product.toString() === idProduct.toString(),
+    );
+
+    if (productIndex === -1) {
+      throw new Error('Sản phẩm không tồn tại trong giỏ hàng.');
+    }
+
+    // Xóa sản phẩm khỏi giỏ hàng
+    tempcart.list_product.splice(productIndex, 1);
+
+    // Lưu giỏ hàng đã cập nhật
+    await tempcart.save();
+
+    return tempcart; // Trả về giỏ hàng đã cập nhật
+  },
 };
