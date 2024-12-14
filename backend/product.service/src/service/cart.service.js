@@ -3,35 +3,62 @@ import product from '../models/product.model.js';
 import mongoose from 'mongoose';
 
 export const cartService = {
-  createCartWithProducts: async (userId, products) => {
-    const productIds = products.map(
+  createCartWithProducts: async (body) => {
+    const { id_user, list_product } = body;
+
+    const productIds = list_product.map((item) => item.id_product);
+
+    // Kiểm tra sản phẩm tồn tại
+    const existingProducts = await product.find({ _id: { $in: productIds } });
+    const existingIds = existingProducts.map((prod) => prod._id.toString());
+    const nonExistentIds = productIds.filter((id) => !existingIds.includes(id));
+    const validProduct = list_product.filter((item) =>
+      existingIds.includes(item.id_product),
+    );
+
+    if (nonExistentIds.length > 0) {
+      console.warn(
+        `Sản phẩm với ID ${nonExistentIds.join(', ')} không tồn tại`,
+      );
+    }
+
+    if (validProduct.length === 0) {
+      return {
+        success: false,
+        message: 'Không có sản phẩm hợp lệ để thêm vào giỏ hàng.',
+      };
+    }
+
+    // Lấy thông tin sản phẩm đã tồn tại
+    const productIdList = validProduct.map(
       (item) => new mongoose.Types.ObjectId(item.id_product),
     );
-    // get lost existingproduct
-    const existingProducts = await product.find({
-      _id: { $in: productIds },
+    const existingProductDetails = await product.find({
+      _id: { $in: productIdList },
     });
-    // get map {idproduct:price}
+
+    // Tạo bản đồ giá sản phẩm
     const productMap = {};
-    existingProducts.forEach((product) => {
+    existingProductDetails.forEach((product) => {
       productMap[product._id.toString()] = product.price;
     });
-    console.log(productMap);
-    // total for all products
-    const total = products.reduce((acc, item) => {
-      // price = 0 if id_product == undefine
+
+    // Tính tổng giá trị giỏ hàng
+    const total = validProduct.reduce((acc, item) => {
       const price = productMap[item.id_product];
       const quantity = item.quantity || 1;
       return acc + (price ? price * quantity : 0);
     }, 0);
+
     const newCart = {
-      id_user: userId,
-      list_product: products.map((item) => ({
+      id_user: id_user,
+      list_product: validProduct.map((item) => ({
         id_product: item.id_product,
         quantity: item.quantity || 1,
       })),
       total: total,
     };
+
     return await cart.create(newCart);
   },
 
