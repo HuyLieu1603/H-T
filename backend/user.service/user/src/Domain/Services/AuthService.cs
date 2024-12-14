@@ -34,7 +34,6 @@ namespace Domain.Services
 				Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
 				IdRole = request.idRole,
 				createAt = DateTime.UtcNow
-
 			};
 			await _userRepository.AddUserAsync(user);
 			await _userRepository.SaveChangeAsync();
@@ -60,7 +59,7 @@ namespace Domain.Services
 				throw new ArgumentNullException("JWT secret is not configured properly.");
 			var claims = new[]
 			{
-				new Claim(ClaimTypes.Name,user.Email),
+				new Claim(ClaimTypes.Name, user.Email),
 				new Claim("idRole",user.IdRole.ToString()),
 				new Claim("UserId",user.IdUser.ToString()),
 			};

@@ -339,6 +339,7 @@ _pkginfo.txt
 # Build folders
 bin/
 obj/
+appsettings.json/
 
 # User-specific files
 *.user
