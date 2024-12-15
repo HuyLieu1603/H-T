@@ -6,7 +6,7 @@ export const wrapRequestHandler = (func) => {
     try {
       await func(req, res, next);
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         message: error.message,
         success: false,
       });

@@ -23,10 +23,11 @@ namespace Domain.Services
 			_jwtSecret = _configuration["Jwt:Secret"];
 		}
 
+		//Register function
 		public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
 		{
 			if (await _userRepository.GetUserByEmailAsync(request.Email) != null)
-				throw new Exception("User already exists");
+				throw new Exception("Email đã được sử dụng");
 			var user = new User
 			{
 				IdUser = Guid.NewGuid(),
@@ -40,6 +41,7 @@ namespace Domain.Services
 			return new AuthResponse { Token = GenerateJwtToken(user), idRole = user.IdRole };
 		}
 
+		//Login function
 		public async Task<AuthResponse> LoginAsync(LoginRequest req)
 		{
 			var user = await _userRepository.GetUserByEmailAsync(req.Email);
@@ -53,10 +55,14 @@ namespace Domain.Services
 			return new AuthResponse { Token = GenerateJwtToken(user), idRole = user.IdRole };
 		}
 
+		//Generate jwt Token function
 		private string GenerateJwtToken(User user)
 		{
+			//Check khóa Secret key
 			if (string.IsNullOrEmpty(_jwtSecret))
 				throw new ArgumentNullException("JWT secret is not configured properly.");
+
+			//Tạo claims
 			var claims = new[]
 			{
 				new Claim(ClaimTypes.Name, user.Email),

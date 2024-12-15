@@ -15,9 +15,6 @@ public class UserRepository : IUserRepository
 	{
 		var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
 
-		if (user == null)
-			throw new Exception("Người dùng không tồn tại");
-
 		return user;
 	}
 

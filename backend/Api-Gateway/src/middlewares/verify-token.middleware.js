@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from '../common/http-status.common.js';
-import { checkTypeToken } from '../utils/handle.util.js';
+import { checkTypeToken } from '../utils/handle-util.js';
 import { handleVerifyToken } from '../utils/jwt.util.js';
 
 export const verifyToken = async (req, res, next) => {
