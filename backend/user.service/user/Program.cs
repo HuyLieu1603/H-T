@@ -8,7 +8,8 @@ using user.src.Infrastructure.DataAccess;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-Console.WriteLine("Ok");
+
+
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -30,7 +31,19 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(option =>
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAllOrigins", builder =>
+	{
+		builder.AllowAnyOrigin()
+			   .AllowAnyMethod()
+			   .AllowAnyHeader();
+	});
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
