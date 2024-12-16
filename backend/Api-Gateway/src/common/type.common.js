@@ -5,7 +5,8 @@ export const TypeToken = {
 };
 
 export const TypeRole = {
-  ADMIN: 'admin',
-  BUSINESS: 'business parner',
-  USER: 'customer',
+  ADMIN: '1',
+  CUSTOMER: '2',
+  STAFF: '3',
+  Businesspanert: '4',
 };

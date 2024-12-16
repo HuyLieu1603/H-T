@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-export const UserController = {
+export const authController = {
   //Login for user
   login: async (req, res) => {
     const body = req.body;

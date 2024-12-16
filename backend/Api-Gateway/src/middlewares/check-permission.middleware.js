@@ -4,14 +4,14 @@ import { TypeRole } from '../common/type.common.js';
 export const checkPermission = (req, res, next) => {
   const { user } = req;
   //check permission
-  switch (user.role) {
+  switch (user.idRole) {
     case TypeRole.ADMIN:
       req.permission = TypeRole.ADMIN;
       break;
-    case TypeRole.STAFF:
-      req.permission = TypeRole.BUSINESS;
+    case TypeRole.Businesspanert:
+      req.permission = TypeRole.Businesspanert;
       break;
-    case TypeRole.USER:
+    case TypeRole.CUSTOMER:
     default:
       return res.status(403).json({
         message: 'Không có quyền truy cập',
@@ -23,7 +23,7 @@ export const checkPermission = (req, res, next) => {
 
 export const authorizeRole = (role) => {
   return (req, res, next) => {
-    if (req.user.role !== role) {
+    if (req.user.idRole !== role) {
       return res.status(HTTP_STATUS.FORBIDDEN).json({
         message: 'Không có quyền!',
         success: false,
