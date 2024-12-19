@@ -17,7 +17,6 @@ public class UserRepository : IUserRepository
 
 		return user;
 	}
-
 	public async Task AddUserAsync(User user)
 	{
 		await _context.Users.AddAsync(user);
@@ -30,9 +29,14 @@ public class UserRepository : IUserRepository
 	{
 		return await _context.Users.ToListAsync();
 	}
-	public async Task<User> GetUserByIdAsync(Guid idUser)
+	public async Task<User?> GetUserByIdAsync(Guid idUser)
 	{
-		var user = await _context.Users.Where(u => u.IdUser == idUser).FirstOrDefaultAsync();
+		var user = await _context.Users.FirstOrDefaultAsync(u => u.IdUser == idUser);
 		return user;
+	}
+	public async Task<bool> UpdateUserAsync(User user)
+	{
+		_context.Users.Update(user);
+		return await _context.SaveChangesAsync() > 0;
 	}
 }

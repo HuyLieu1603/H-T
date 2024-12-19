@@ -8,6 +8,7 @@ namespace Domain.Interfaces
 		Task AddUserAsync(User user);
 		Task<bool> SaveChangeAsync();
 		Task<List<User>> FetchListUserAsync();
-		Task<User> GetUserByIdAsync(Guid idUser);
+		Task<User?> GetUserByIdAsync(Guid idUser);
+		Task<bool> UpdateUserAsync(User user);
 	}
 }

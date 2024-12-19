@@ -10,7 +10,7 @@ namespace Domain.Models
 		public string? Password { get; set; }
 		public string? NameUser { get; set; }
 		public int IdRole { get; set; }
-		public DateTime? BirthDay { get; set; }
+		public DateOnly? BirthDay { get; set; }
 		public DateTime? createAt { get; set; }
 		public Role Role { get; set; }
 	}

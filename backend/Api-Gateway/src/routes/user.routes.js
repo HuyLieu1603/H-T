@@ -26,4 +26,11 @@ router.get(
   wrapRequestHandler(verifyToken),
   wrapRequestHandler(userController.getUserById),
 );
+
+//update user by id
+router.put(
+  '/user/:id',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(userController.updateUserById),
+);
 export default router;
