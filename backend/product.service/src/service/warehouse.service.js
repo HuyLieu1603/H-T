@@ -16,7 +16,7 @@ export const warehouseService = {
       query = {
         $and: [
           {
-            $or: [{ nameWarehouse: { $regax: new RegExp(q), $options: 'i' } }],
+            $or: [{ nameWarehouse: { $regex: new RegExp(q), $options: 'i' } }],
           },
         ],
       };
@@ -24,7 +24,7 @@ export const warehouseService = {
     const option = {
       limit: parseInt(_limit),
       page: parseInt(_page),
-      populate: populateDefault,
+      populate: populate || populateDefault,
       sort: { createdAt: -1 },
     };
     return { option, query };
@@ -67,6 +67,10 @@ export const warehouseService = {
   },
   //check exist name warehouse
   checkExistName: async (nameWarehouse) => {
-    return warehouse.findOne({ nameWarehouse: nameWarehouse });
+    return await warehouse.findOne({ nameWarehouse: nameWarehouse });
+  },
+  //check exist warehouse in shop
+  checkWarehouseInShop: async (idShop) => {
+    return await warehouse.findOne(idShop);
   },
 };

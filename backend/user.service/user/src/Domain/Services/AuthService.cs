@@ -8,6 +8,7 @@ using BCrypt.Net;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using user.src.API.Models;
 
 namespace Domain.Services
 {
@@ -52,6 +53,21 @@ namespace Domain.Services
 			if (!BCrypt.Net.BCrypt.Verify(req.Password, user.Password))
 				throw new Exception("Mật khẩu sai!");
 
+			return new AuthResponse { Token = GenerateJwtToken(user), idRole = user.IdRole };
+		}
+
+		//Change password
+		public async Task<AuthResponse> ChangePasswordAsync(Guid idUser, ChangePassword req)
+		{
+			var user = await _userRepository.GetUserByIdAsync(idUser);
+			Console.WriteLine(req.NewPassword);
+			Console.WriteLine(user.Password);
+			if (user == null)
+				throw new Exception("Tài khoản không tồn tại");
+			if (!BCrypt.Net.BCrypt.Verify(req.Password, user.Password))
+				throw new Exception("Sai mật khẩu!");
+			user.Password = BCrypt.Net.BCrypt.HashPassword(req.NewPassword);
+			await _userRepository.SaveChangeAsync();
 			return new AuthResponse { Token = GenerateJwtToken(user), idRole = user.IdRole };
 		}
 

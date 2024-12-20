@@ -1,5 +1,6 @@
 import { shopService } from '../service/shop.service.js';
 import { HTTP_STATUS } from '../common/http-status.common.js';
+import { warehouseService } from '../service/warehouse.service.js';
 
 export const shopController = {
   //Create new shop
@@ -83,6 +84,15 @@ export const shopController = {
   //Delete shop
   deleteShopById: async (req, res) => {
     const { idShop } = req.params;
+
+    //check relationship
+    const isExist = await warehouseService.checkWarehouseInShop(idShop);
+    if (!isExist)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Không thể xóa vì có dữ liệu bên bảng khác!',
+        success: false,
+      });
+
     //DELETE
     const result = await shopService.deleteShop(idShop);
     if (!result)

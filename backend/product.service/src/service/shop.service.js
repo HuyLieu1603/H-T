@@ -1,6 +1,10 @@
 import shop from '../models/shop.model.js';
 
 export const shopService = {
+  //check exist
+  isExistShop: async (idShop) => {
+    return await shop.findById(idShop);
+  },
   //create new shop
   createNewShop: async (body) => {
     return await shop.create(body);

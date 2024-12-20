@@ -1,4 +1,5 @@
 import { HTTP_STATUS } from '../common/http-status.common.js';
+import warehouse from '../models/warehouse.model.js';
 import { warehouseService } from '../service/warehouse.service.js';
 
 export const warehouseController = {
@@ -64,6 +65,24 @@ export const warehouseController = {
       message: 'Tải thông tin kho hàng thành công',
       success: true,
       data: warehouseDetail,
+    });
+  },
+  //fetch list warehouse option
+  paginateWarehouse: async (req, res) => {
+    const params = req.query;
+
+    const { option, query } = await warehouseService.optionWarehouse(params);
+
+    const warehouseList = await warehouse.painate(query, option);
+    if (!warehouseList)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Tải dữ liệu thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Tải dữ liệu thành công!',
+      success: true,
+      data: warehouseList,
     });
   },
   //fetch list warehouse (ADMIN)
