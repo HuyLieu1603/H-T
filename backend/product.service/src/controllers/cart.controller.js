@@ -13,7 +13,6 @@ export const cartController = {
     let userCart;
     try {
       userCart = await cartService.checkCartUserbyUserID(id_user);
-      console.log(userCart);
 
       const idcart = await cartService.getIdCartByIduser(userCart);
 
