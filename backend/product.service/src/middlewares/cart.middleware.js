@@ -15,7 +15,5 @@ export const cartMiddleware = async (req, res, next) => {
     });
   }
 
-  
-
   next();
 };

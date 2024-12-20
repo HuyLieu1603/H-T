@@ -44,14 +44,19 @@ export const cartController = {
   },
 
   addProductToCart: async (req, res) => {
-    const { product } = req.body;
-    const { id_user } = req.user;
+    const { list_product } = req.body;
+    console.log(list_product);
+    const { id_user } = req.params;
+    console.log(id_user);
     // updatecart
     try {
       const idcart = await cartService.getIdCartByIduser(id_user);
       console.log(idcart);
 
-      const updatedCart = await cartService.addProductToCart(idcart, product);
+      const updatedCart = await cartService.addProductToCart(
+        idcart,
+        list_product,
+      );
 
       return res.status(HTTP_STATUS.OK).json({
         message: 'Thêm sản phẩm vào giỏ hàng thành công!',

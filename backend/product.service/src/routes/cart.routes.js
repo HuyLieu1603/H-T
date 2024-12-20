@@ -13,7 +13,7 @@ router.post(
 );
 // add product for cart
 router.post(
-  '/cart/add',
+  '/cart/add/:id_user',
   wrapRequestHandler(verifyToken),
   wrapRequestHandler(cartController.addProductToCart),
 );
