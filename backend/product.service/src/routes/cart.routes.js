@@ -1,6 +1,7 @@
 import { cartController } from '../controllers/cart.controller.js';
 import { cartMiddleware } from '../middlewares/cart.middleware.js';
 import { wrapRequestHandler } from '../utils/handle.util.js';
+import { verifyToken } from '../middlewares/verify-token.middleware.js';
 import express from 'express';
 
 const router = express.Router();
@@ -11,7 +12,11 @@ router.post(
   wrapRequestHandler(cartController.createCart),
 );
 // add product for cart
-router.post('/cart/add', wrapRequestHandler(cartController.addProductToCart));
+router.post(
+  '/cart/add',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(cartController.addProductToCart),
+);
 // update quantity
 router.put(
   '/cart/update-quantity',

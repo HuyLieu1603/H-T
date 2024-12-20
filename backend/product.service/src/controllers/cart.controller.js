@@ -44,29 +44,12 @@ export const cartController = {
   },
 
   addProductToCart: async (req, res) => {
-    const { id_user, product } = req.body;
-    // Kiểm tra xem product có dữ liệu không
-    if (!product || product.length === 0) {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Không có sản phẩm nào để thêm',
-        success: false,
-      });
-    }
-
-    // Tìm giỏ hàng của người dùng
-    let userCart;
-    try {
-      userCart = await cartService.checkCartUserbyUserID(id_user);
-    } catch (error) {
-      return res.status(HTTP_STATUS.NOT_FOUND).json({
-        message: 'Giỏ hàng không tồn tại.',
-        success: false,
-      });
-    }
-
+    const { product } = req.body;
+    const { id_user } = req.user;
     // updatecart
     try {
-      const idcart = await cartService.getIdCartByIduser(userCart);
+      const idcart = await cartService.getIdCartByIduser(id_user);
+      console.log(idcart);
 
       const updatedCart = await cartService.addProductToCart(idcart, product);
 
