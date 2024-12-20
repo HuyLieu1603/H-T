@@ -3,6 +3,7 @@ using Domain.Interfaces;
 using Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using user.src.Domain.Services;
 using user.src.Infrastructure.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(builde
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(option =>
 {
 	option.TokenValidationParameters = new TokenValidationParameters
