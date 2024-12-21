@@ -44,4 +44,11 @@ router.delete(
   wrapRequestHandler(warehouseController.deleteWarehouse),
 );
 
+router.post(
+  '/warehouse-category/:idWarehouse',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(checkPermission),
+  wrapRequestHandler(warehouseController.addCategoryToWarehouse),
+);
+
 export default router;

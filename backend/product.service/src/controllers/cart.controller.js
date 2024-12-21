@@ -45,9 +45,7 @@ export const cartController = {
 
   addProductToCart: async (req, res) => {
     const { list_product } = req.body;
-    console.log(list_product);
     const { id_user } = req.params;
-    console.log(id_user);
     // updatecart
     try {
       const idcart = await cartService.getIdCartByIduser(id_user);

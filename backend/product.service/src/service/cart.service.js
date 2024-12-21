@@ -108,27 +108,27 @@ export const cartService = {
 
     return await productMap;
   },
-  addProductToCart: async (idCart, productOfUser) => {
-    const idproduct = productOfUser[0].id_product;
-    const quantity = productOfUser[0].quantity || 1;
-    const tempcart = await cartService.getCartById(idCart);
+  addProductToCart: async (idCart, listProduct) => {
+    return await cart.findByIdAndUpdate(idCart, {
+      $push: { list_product: listProduct },
+    });
+    // const idproduct = productOfUser[0].id_product;
+    // const quantity = productOfUser[0].quantity || 1;
+    // const tempcart = await cartService.getCartById(idCart);
 
-    const product = await productService.getProductById(idproduct);
-    console.log('haha');
-    console.log(product);
-    console.log(tempcart);
-    tempcart = cartService.updatequantity(product, tempcart, quantity);
+    // const product = await productService.getProductById(idproduct);
+    // tempcart = cartService.updatequantity(product, tempcart, quantity);
 
-    const mapproduct = cartService.createpriceproductmap(tempcart);
+    // const mapproduct = cartService.createpriceproductmap(tempcart);
 
-    // update total
-    tempcart.total = tempcart.list_product.reduce((acc, item) => {
-      const itemPrice = mapproduct[item.id_product.toString()]; // Lấy giá từ productMap
-      return acc + (itemPrice ? itemPrice * item.quantity : 0);
-    }, 0);
+    // // update total
+    // tempcart.total = tempcart.list_product.reduce((acc, item) => {
+    //   const itemPrice = mapproduct[item.id_product.toString()]; // Lấy giá từ productMap
+    //   return acc + (itemPrice ? itemPrice * item.quantity : 0);
+    // }, 0);
 
-    await tempcart.save();
-    return tempcart;
+    // await tempcart.save();
+    // return tempcart;
   },
   updateCartTotal: async (cart) => {
     const productIds = cart.list_product.map((item) => item.id_product);
