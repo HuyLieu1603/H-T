@@ -45,30 +45,44 @@ export const cartController = {
 
   addProductToCart: async (req, res) => {
     const { list_product } = req.body;
-    console.log(list_product);
-    const { id_user } = req.params;
-    console.log(id_user);
-    // updatecart
-    try {
-      const idcart = await cartService.getIdCartByIduser(id_user);
-      console.log(idcart);
+    const { id_user } = req.body;
+    const id_product = list_product[0].id_product;
+    const quantity = list_product[0].quantity;
 
-      const updatedCart = await cartService.addProductToCart(
-        idcart,
-        list_product,
+    const id_cart = await cartService.getIdCartByIduser(id_user);
+    console.log(id_cart);
+    const promises = [];
+    const check = await cartService.checkItemProductOfCart(id_cart, id_product);
+    const tempcart = await cartService.getCartById(id_cart);
+    if (check) {
+      const temp = await cartService.updateQuantityForAvilableItem(
+        id_cart,
+        id_product,
+        quantity,
       );
+      promises.push(temp);
+    } else {
+      const temp = await cartService.addProductToCart(
+        id_cart,
+        id_product,
+        quantity,
+      );
+      promises.push(temp);
+    }
+    const result = await Promise.all(promises);
 
-      return res.status(HTTP_STATUS.OK).json({
-        message: 'Thêm sản phẩm vào giỏ hàng thành công!',
-        success: true,
-        data: updatedCart,
-      });
-    } catch (error) {
+    if (!result) {
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: error.message,
+        message: 'Thêm sản phẩm giỏ hàng thất bại!',
         success: false,
       });
     }
+
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Thêm sản phẩm  thành công!',
+      success: true,
+      data: tempcart,
+    });
   },
   updateProductQuantityInCart: async (req, res) => {
     const { idCart, product } = req.body;
@@ -110,6 +124,18 @@ export const cartController = {
         success: false,
       });
     }
+  },
+  deleteProductInCart: async (req, res) => {
+    const { list_product } = req.body;
+    const { idCart } = req.params;
+    console.log(list_product, idCart);
+    const result = await cartService.deleteProductInListProduct(
+      { _id: idCart },
+      {
+        list_product: list_product,
+      },
+    );
+    console.log(result);
   },
   deleteProductFromCart: async (req, res) => {
     const { idcart, idProduct } = req.body;

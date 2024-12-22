@@ -12,19 +12,15 @@ router.post(
   wrapRequestHandler(cartController.createCart),
 );
 // add product for cart
-router.post(
-  '/cart/add/:id_user',
-  wrapRequestHandler(verifyToken),
-  wrapRequestHandler(cartController.addProductToCart),
-);
+router.post('/cart/add', wrapRequestHandler(cartController.addProductToCart));
 // update quantity
 router.put(
   '/cart/update-quantity',
   wrapRequestHandler(cartController.updateProductQuantityInCart),
 );
-router.delete(
-  '/cart',
-  wrapRequestHandler(cartController.deleteProductFromCart),
+router.post(
+  '/cart/delete/:idCart',
+  wrapRequestHandler(cartController.deleteProductInCart),
 );
 
 export default router;
