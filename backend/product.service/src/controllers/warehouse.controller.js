@@ -91,7 +91,7 @@ export const warehouseController = {
     //get option from user
     const option = await warehouseService.optionWarehouse(params);
     //fetch list by option
-    const listWarehouse = await warehouseService.fetchListWarehouse(option);
+    const listWarehouse = await warehouseService.fetchListWarehouse();
     if (!listWarehouse)
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
         message: 'Tải danh sách kho hàng thất bại!',
@@ -101,6 +101,28 @@ export const warehouseController = {
       message: 'Tải danh sách kho hàng thành công!',
       success: true,
       data: listWarehouse,
+    });
+  },
+  //get all category in list into warehouse
+  addCategoryIntoWarehouse: async (req, res) => {
+    //get list from body
+    const { listCategory } = req.body;
+    //get id warehouse
+    const { idWarehouse } = req.params;
+    //action
+    const result = await warehouseService.addCategoryToWarehouse(
+      idWarehouse,
+      listCategory,
+    );
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Thêm loại sản phẩm vào kho thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Thêm loại sản phẩm vào kho thành công!',
+      success: true,
+      data: result,
     });
   },
 };

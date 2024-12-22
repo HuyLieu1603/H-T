@@ -41,3 +41,21 @@ export const warehouseValidation = joi.object({
   ),
   status: joi.boolean().default(true),
 });
+
+export const addCategoryValidation = joi.object({
+  listCategory: joi.array().items(
+    joi.object({
+      idCategory: joi
+        .string()
+        .required()
+        .custom(async (value, helpers) => {
+          if (warehouseService.checkExistCate(value))
+            return helpers.message('Loại sản phẩm không được trùng!');
+          if (!mongoose.Types.ObjectId.isValid(value))
+            return helpers.message('Mã loại không hợp lệ');
+          if (!categoryService.getCategoryById(value))
+            return helpers.message('Mã loại không tồn tại!');
+        }),
+    }),
+  ),
+});

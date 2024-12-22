@@ -17,11 +17,15 @@ namespace Domain.Services
 		private readonly IUserRepository _userRepository;
 		private readonly IConfiguration _configuration;
 		private readonly string _jwtSecret;
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		public AuthService(IUserRepository userRepository, IConfiguration configuration)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 		{
 			_userRepository = userRepository;
 			_configuration = configuration;
+#pragma warning disable CS8601 // Possible null reference assignment.
 			_jwtSecret = _configuration["Jwt:Secret"];
+#pragma warning restore CS8601 // Possible null reference assignment.
 		}
 
 		//Register function
@@ -61,7 +65,9 @@ namespace Domain.Services
 		{
 			var user = await _userRepository.GetUserByIdAsync(idUser);
 			Console.WriteLine(req.NewPassword);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 			Console.WriteLine(user.Password);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 			if (user == null)
 				throw new Exception("Tài khoản không tồn tại");
 			if (!BCrypt.Net.BCrypt.Verify(req.Password, user.Password))
@@ -79,12 +85,14 @@ namespace Domain.Services
 				throw new ArgumentNullException("JWT secret is not configured properly.");
 
 			//Tạo claims
+#pragma warning disable CS8604 // Possible null reference argument.
 			var claims = new[]
 			{
 				new Claim(ClaimTypes.Name, user.Email),
 				new Claim("idRole",user.IdRole.ToString()),
 				new Claim("UserId",user.IdUser.ToString()),
 			};
+#pragma warning restore CS8604 // Possible null reference argument.
 
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret));
 			var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
