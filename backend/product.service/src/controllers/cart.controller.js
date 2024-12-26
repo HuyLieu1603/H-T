@@ -76,6 +76,11 @@ export const cartController = {
         message: 'Thêm sản phẩm giỏ hàng thất bại!',
         success: false,
       });
+    } else {
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'cập nhập số lượng thành công',
+        success: true,
+      });
     }
 
     return res.status(HTTP_STATUS.OK).json({

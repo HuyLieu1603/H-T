@@ -42,5 +42,10 @@ router.get(
   '/warehouse/:idWarehouse',
   wrapRequestHandler(warehouseController.getWarehouse),
 );
+//add category to warehouse
+router.post(
+  '/warehouse-category/:idWarehouse',
+  wrapRequestHandler(warehouseController.addCategoryToWarehouse),
+);
 
 export default router;

@@ -240,4 +240,16 @@ export const cartService = {
     // create a cart without data
     return await cart.create(id_user);
   },
+  // up quantity of one a item producttion
+  increaseQuantityItem: async function (id_cart, id_product) {
+    return await cart.findOneAndUpdate(
+      { _id: id_cart, 'list_product.id_product': id_product },
+      {
+        $inc: {
+          'list_product.$.quantity': 1, // Tăng số lượng sản phẩm
+        },
+      },
+      { new: true },
+    );
+  },
 };
