@@ -252,4 +252,15 @@ export const cartService = {
       { new: true },
     );
   },
+  decreaseQuantityItem: async function (id_cart, id_product) {
+    return await cart.findOneAndUpdate(
+      { _id: id_cart, 'list_product.id_product': id_product },
+      {
+        $inc: {
+          'list_product.$.quantity': -1, // Giảm số lượng sản phẩm
+        },
+      },
+      { new: true },
+    );
+  },
 };

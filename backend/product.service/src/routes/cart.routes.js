@@ -26,4 +26,8 @@ router.post(
   '/cart/increasequantity',
   wrapRequestHandler(cartController.increaseQuantityItem),
 );
-export default router;
+router.post(
+  '/cart/decreasequantity',
+  wrapRequestHandler(cartController.decreaseQuantityItem),
+);
+export default router;  
