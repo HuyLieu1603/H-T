@@ -42,7 +42,33 @@ export const cartController = {
       });
     }
   },
-
+  increaseQuantityItem: async (req, res) => {
+    const { id_cart, id_product } = req.body;
+    console.log('Request Body:', req.body);
+    const cart = await cartService.increaseQuantityItem(id_cart, id_product);
+    if (!cart) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Không tìm thấy giỏ hàng hoặc sản phẩm',
+        success: false,
+      });
+    }
+    console.log(cart);
+    const productmap = await cartService.createProductMap(cart);
+    console.log(productmap);
+    const result = cartService.updateCartTotal(cart, productmap);
+    console.log(result);
+    if (!result) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Thất bại update',
+        success: false,
+      });
+    } else {
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'update thành công',
+        success: true,
+      });
+    }
+  },
   addProductToCart: async (req, res) => {
     const { list_product } = req.body;
     const { id_user } = req.body;

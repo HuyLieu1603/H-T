@@ -22,5 +22,8 @@ router.post(
   '/cart/delete/:idCart',
   wrapRequestHandler(cartController.deleteProductInCart),
 );
-
+router.post(
+  '/cart/increasequantity',
+  wrapRequestHandler(cartController.increaseQuantityItem),
+);
 export default router;
