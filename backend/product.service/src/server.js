@@ -20,6 +20,7 @@ app.use(
       'http://localhost:4200',
       'http://localhost:3001',
       'http://localhost:8080',
+      'http://localhost:5000',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   }),
@@ -47,7 +48,7 @@ app.use(async (req, res) => {
   try {
     await func(req, res, next);
   } catch (error) {
-    // console.log('🚀 ~ app.use ~ error:', error);
+    console.log('🚀 ~ app.use ~ error:', error);
     return res.status(500).json({
       message: error.message,
       success: false,

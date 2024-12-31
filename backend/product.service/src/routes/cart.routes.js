@@ -30,4 +30,9 @@ router.post(
   '/cart/decreasequantity',
   wrapRequestHandler(cartController.decreaseQuantityItem),
 );
+router.post(
+  '/cart/cartCreateNew',
+  wrapRequestHandler(cartController.createNewCart),
+);
+
 export default router;  

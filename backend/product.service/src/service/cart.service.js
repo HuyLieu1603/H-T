@@ -4,64 +4,64 @@ import mongoose from 'mongoose';
 import { productService } from './product.service.js';
 
 export const cartService = {
-  createCartWithProducts: async (body) => {
-    const { id_user, list_product } = body;
+  // createCartWithProducts: async (body) => {
+  //   const { id_user, list_product } = body;
 
-    const productIds = list_product.map((item) => item.id_product);
+  //   const productIds = list_product.map((item) => item.id_product);
 
-    // Kiểm tra sản phẩm tồn tại
-    const existingProducts = await product.find({ _id: { $in: productIds } });
-    const existingIds = existingProducts.map((prod) => prod._id.toString());
-    const nonExistentIds = productIds.filter((id) => !existingIds.includes(id));
-    const validProduct = list_product.filter((item) =>
-      existingIds.includes(item.id_product),
-    );
+  //   // Kiểm tra sản phẩm tồn tại
+  //   const existingProducts = await product.find({ _id: { $in: productIds } });
+  //   const existingIds = existingProducts.map((prod) => prod._id.toString());
+  //   const nonExistentIds = productIds.filter((id) => !existingIds.includes(id));
+  //   const validProduct = list_product.filter((item) =>
+  //     existingIds.includes(item.id_product),
+  //   );
 
-    if (nonExistentIds.length > 0) {
-      console.warn(
-        `Sản phẩm với ID ${nonExistentIds.join(', ')} không tồn tại`,
-      );
-    }
+  //   if (nonExistentIds.length > 0) {
+  //     console.warn(
+  //       `Sản phẩm với ID ${nonExistentIds.join(', ')} không tồn tại`,
+  //     );
+  //   }
 
-    if (validProduct.length === 0) {
-      return {
-        success: false,
-        message: 'Không có sản phẩm hợp lệ để thêm vào giỏ hàng.',
-      };
-    }
+  //   if (validProduct.length === 0) {
+  //     return {
+  //       success: false,
+  //       message: 'Không có sản phẩm hợp lệ để thêm vào giỏ hàng.',
+  //     };
+  //   }
 
-    // Lấy thông tin sản phẩm đã tồn tại
-    const productIdList = validProduct.map(
-      (item) => new mongoose.Types.ObjectId(item.id_product),
-    );
-    const existingProductDetails = await product.find({
-      _id: { $in: productIdList },
-    });
+  //   // Lấy thông tin sản phẩm đã tồn tại
+  //   const productIdList = validProduct.map(
+  //     (item) => new mongoose.Types.ObjectId(item.id_product),
+  //   );
+  //   const existingProductDetails = await product.find({
+  //     _id: { $in: productIdList },
+  //   });
 
-    // Tạo bản đồ giá sản phẩm
-    const productMap = {};
-    existingProductDetails.forEach((product) => {
-      productMap[product._id.toString()] = product.price;
-    });
+  //   // Tạo bản đồ giá sản phẩm
+  //   const productMap = {};
+  //   existingProductDetails.forEach((product) => {
+  //     productMap[product._id.toString()] = product.price;
+  //   });
 
-    // Tính tổng giá trị giỏ hàng
-    const total = validProduct.reduce((acc, item) => {
-      const price = productMap[item.id_product];
-      const quantity = item.quantity || 1;
-      return acc + (price ? price * quantity : 0);
-    }, 0);
+  //   // Tính tổng giá trị giỏ hàng
+  //   const total = validProduct.reduce((acc, item) => {
+  //     const price = productMap[item.id_product];
+  //     const quantity = item.quantity || 1;
+  //     return acc + (price ? price * quantity : 0);
+  //   }, 0);
 
-    const newCart = {
-      id_user: id_user,
-      list_product: validProduct.map((item) => ({
-        id_product: item.id_product,
-        quantity: item.quantity || 1,
-      })),
-      total: total,
-    };
+  //   const newCart = {
+  //     id_user: id_user,
+  //     list_product: validProduct.map((item) => ({
+  //       id_product: item.id_product,
+  //       quantity: item.quantity || 1,
+  //     })),
+  //     total: total,
+  //   };
 
-    return await cart.create(newCart);
-  },
+  //   return await cart.create(newCart);
+  // },
   /*
  checkCartUserbyUserID: async (id_user) => {
     const idCart = await cart.findOne({ id_user: id_user });
@@ -156,14 +156,15 @@ export const cartService = {
 
   addProductToCart: async (idCart, idproduct, quantity) => {
     const tempcart = await cartService.getCartById(idCart);
-    const currenttotal = tempcart.total;
     const moneyOfItem = await productService.getMoneyByIdProduct(idproduct);
-    const Total = currenttotal + moneyOfItem * quantity;
+    console.log(quantity);
+    const Total = moneyOfItem * quantity;
+    console.log(Total);
     await tempcart.list_product.push({
       id_product: idproduct,
       quantity: quantity,
-      total: Total,
     });
+    tempcart.total = Total;
     return await tempcart.save();
   },
 
@@ -236,9 +237,16 @@ export const cartService = {
 
     return tempcart; // Trả về giỏ hàng đã cập nhật
   },
-  createnewcart: async function (id_user) {
-    // create a cart without data
-    return await cart.create(id_user);
+  createnewcart: async (id_user) => {
+    // create a cart without dataq
+    const list_product = [];
+    const total = 0;
+    const newCart = {
+      id_user: id_user,
+      list_product: list_product,
+      total: total,
+    };
+    return await cart.create(newCart);
   },
   // up quantity of one a item producttion
   increaseQuantityItem: async function (id_cart, id_product) {

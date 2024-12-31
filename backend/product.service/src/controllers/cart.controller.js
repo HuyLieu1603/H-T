@@ -98,15 +98,17 @@ export const cartController = {
   },
   addProductToCart: async (req, res) => {
     const { list_product } = req.body;
-    const { id_user } = req.body;
+    const { UserId } = req.body;
+
+    console.log(list_product);
+    console.log(UserId);
     const id_product = list_product[0].id_product;
     const quantity = list_product[0].quantity;
 
-    const id_cart = await cartService.getIdCartByIduser(id_user);
-    console.log(id_cart);
+    const id_cart = await cartService.getIdCartByIduser(UserId);
     const promises = [];
     const check = await cartService.checkItemProductOfCart(id_cart, id_product);
-    const tempcart = await cartService.getCartById(id_cart);
+
     if (check) {
       const temp = await cartService.updateQuantityForAvilableItem(
         id_cart,
@@ -126,7 +128,7 @@ export const cartController = {
 
     if (!result) {
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Thêm sản phẩm giỏ hàng thất bại!',
+        message: 'cập nhập số lượng thất bại',
         success: false,
       });
     } else {
@@ -135,12 +137,6 @@ export const cartController = {
         success: true,
       });
     }
-
-    return res.status(HTTP_STATUS.OK).json({
-      message: 'Thêm sản phẩm  thành công!',
-      success: true,
-      data: tempcart,
-    });
   },
   updateProductQuantityInCart: async (req, res) => {
     const { idCart, product } = req.body;
@@ -234,6 +230,24 @@ export const cartController = {
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
         message: error.message,
         success: false,
+      });
+    }
+  },
+  createNewCart: async (req, res) => {
+    const { UserId } = req.body;
+    console.log(UserId);
+    const result = await cartService.createnewcart(UserId);
+    console.log(UserId);
+    if (!result) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Tạo Giỏ Hàng Thất Bại!',
+        success: false,
+      });
+    } else {
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Tạo Giỏ Hàng Thành Công!',
+        success: true,
+        data: result,
       });
     }
   },
