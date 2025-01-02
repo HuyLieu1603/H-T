@@ -64,4 +64,42 @@ export const cartController = {
   //     data: cart.data,
   //   });
   // },
+  increaseQuantity: async (req, res) => {
+    const { id_cart, id_product } = req.body;
+    const result = axios.post(
+      `${process.env.PRODUCT_SERVICE_URL}/cart/increasequantity`,
+      { id_cart, id_product },
+      config,
+    );
+    if (!result) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Cập Nhập số lượng thất bại',
+        success: false,
+      });
+    } else {
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Cập Nhập số lượng thành công',
+        success: true,
+      });
+    }
+  },
+  decreaseQuantity: async (req, res) => {
+    const { id_cart, id_product } = req.body;
+    const result = axios.post(
+      `${process.env.PRODUCT_SERVICE_URL}/cart/decreasequantity`,
+      { id_cart, id_product },
+      config,
+    );
+    if (!result) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Cập nhập số lượng thất bại',
+        success: false,
+      });
+    } else {
+      return res.status(HTTP_STATUS.OK).json({
+        message: 'Cập nhập số lượng thành công',
+        success: true,
+      });
+    }
+  },
 };
