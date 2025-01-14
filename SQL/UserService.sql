@@ -30,3 +30,25 @@ ALTER COLUMN Password NVARCHAR(255);
 
 SELECT * FROM ROLE
 SELECT * FROM USERS
+
+
+/* Create Account To Use Docker */
+
+CREATE LOGIN HuyLieu WITH PASSWORD = 'Giahuy1603';
+CREATE USER HuyLieu FOR LOGIN HuyLieu;
+EXEC sp_addrolemember 'db_datareader', 'HuyLieu';
+EXEC sp_addrolemember 'db_datawriter', 'HuyLieu';
+
+EXEC sp_helplogins 'HuyLieu';
+
+SELECT name FROM sys.databases;
+GO
+
+
+SELECT *
+FROM sys.sql_logins
+WHERE name = 'sa';
+
+ALTER LOGIN sa ENABLE;
+
+ALTER LOGIN sa WITH PASSWORD = 'Giahuy1603';

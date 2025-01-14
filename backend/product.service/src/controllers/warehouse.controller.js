@@ -13,7 +13,7 @@ export const warehouseController = {
         message: 'Tạo kho hàng thất bại!',
         success: false,
       });
-    return res.status(HTTP_STATUS.OK).json({
+    return res.status(HTTP_STATUS.CREATED).json({
       message: 'Tạo kho hàng thành công!',
       success: true,
       data: newWarehouse,
@@ -123,6 +123,27 @@ export const warehouseController = {
       message: 'Thêm loại sản phẩm vào kho thành công!',
       success: true,
       data: result,
+    });
+  },
+  //delete category in list in warehouse
+  removeCategoryFromWarehouse: async (req, res) => {
+    //get id warehouse
+    const { idWarehouse } = req.params;
+    //get listCategory from req body
+    const { listCategory } = req.body;
+    //action
+    const result = await warehouseService.deleteCategoryInWarehouse(
+      idWarehouse,
+      listCategory,
+    );
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Xóa loại sản phẩm thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Xóa loại sản phẩm thành công!',
+      success: true,
     });
   },
 };

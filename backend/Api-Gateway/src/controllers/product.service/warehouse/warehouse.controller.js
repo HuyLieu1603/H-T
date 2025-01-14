@@ -6,9 +6,8 @@ export const warehouseController = {
   //create new warehouse
   createWarehouse: async (req, res) => {
     const data = req.body;
-
     const result = await axios.post(
-      `${process.env.PRODUCT_SERVICE_URL}`,
+      `${process.env.PRODUCT_SERVICE_URL}/warehouse`,
       data,
       config,
     );

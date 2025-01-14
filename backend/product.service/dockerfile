@@ -1,0 +1,12 @@
+# Image base
+FROM node:20
+
+# Cài đặt dependencies
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+# Copy mã nguồn và chạy ứng dụng
+COPY . .
+EXPOSE 8080
+CMD ["node", "./src/server.js"]

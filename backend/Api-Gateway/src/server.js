@@ -4,6 +4,7 @@ import rootRoutes from './routes/index.js';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+
 const app = express();
 
 //middleware
@@ -17,6 +18,7 @@ app.use(
       'http://localhost:3001',
       'http://localhost:8080',
       'http://localhost:5179',
+      'http://localhost:1433',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   }),
