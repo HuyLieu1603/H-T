@@ -64,7 +64,10 @@ export const productService = {
   updateProduct: async (idProduct, data) => {
     return await product.findByIdAndUpdate(idProduct, data, { new: true });
   },
-
+  getMoneyByIdProduct: async (idProduct) => {
+    const cartDocument = await product.findById(idProduct).select('price'); // Chỉ lấy trường total
+    return cartDocument ? cartDocument.price : null; // Trả về total hoặc null nếu không tìm thấy
+  },
   // delete product
   deleteProduct: async (idProduct) => {
     const tempproduct = await product.findById(idProduct);

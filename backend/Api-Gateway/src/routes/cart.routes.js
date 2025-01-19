@@ -14,4 +14,24 @@ router.post(
   wrapRequestHandler(verifyToken),
   wrapRequestHandler(cartController.addProductToCart),
 );
+router.post(
+  '/cart/cartCreateNew',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(cartController.createNewCart),
+);
+router.post(
+  '/cart/add',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(cartController.addProductToCart),
+);
+router.post(
+  '/cart/increasequantity',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(cartController.increaseQuantity),
+);
+router.post(
+  '/cart/decreasequantity',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(cartController.decreaseQuantity),
+);
 export default router;
