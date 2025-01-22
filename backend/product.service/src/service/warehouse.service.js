@@ -1,4 +1,4 @@
-import { Query } from 'mongoose';
+import mongoose, { Query } from 'mongoose';
 import warehouse from '../models/warehouse.model.js';
 
 export const warehouseService = {
@@ -100,5 +100,15 @@ export const warehouseService = {
   //check category is exist in warehouse
   checkExistCate: async (idWarehouse, idCategory) => {
     return warehouse.findOne({ _id: idWarehouse, idCategory: idCategory });
+  },
+
+  addCategoryToWarehouse: async (idWarehouse, idCategory) => {
+    return await warehouse.findByIdAndUpdate(
+      idWarehouse,
+      {
+        $push: { listCategory: { idCategory: idCategory } },
+      },
+      { new: true },
+    );
   },
 };

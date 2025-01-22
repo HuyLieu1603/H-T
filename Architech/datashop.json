@@ -1,0 +1,226 @@
+[
+  {
+    "nameShop": "Shop Điện Thoại A",
+    "desc": "Cung cấp điện thoại di động chính hãng.",
+    "address": "123 Đường 1, Quận 1, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Máy Tính B",
+    "desc": "Máy tính xách tay và phụ kiện.",
+    "address": "456 Đường 2, Quận 2, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Phụ Kiện C",
+    "desc": "Phụ kiện điện thoại chất lượng.",
+    "address": "789 Đường 3, Quận 3, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thiết Bị Chơi Game D",
+    "desc": "Thiết bị chơi game mới nhất.",
+    "address": "101 Đường 4, Quận 4, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Âm Thanh E",
+    "desc": "Loa và tai nghe chính hãng.",
+    "address": "202 Đường 5, Quận 5, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Camera F",
+    "desc": "Máy ảnh và phụ kiện chụp ảnh.",
+    "address": "303 Đường 6, Quận 6, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thiết Bị Gia Dụng G",
+    "desc": "Các thiết bị gia dụng thông minh.",
+    "address": "404 Đường 7, Quận 7, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thời Trang H",
+    "desc": "Quần áo và phụ kiện thời trang.",
+    "address": "505 Đường 8, Quận 8, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Sức Khỏe I",
+    "desc": "Sản phẩm chăm sóc sức khỏe.",
+    "address": "606 Đường 9, Quận 9, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thể Thao J",
+    "desc": "Thiết bị và phụ kiện thể thao.",
+    "address": "707 Đường 10, Quận 10, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Hàng Điện Tử K",
+    "desc": "Các sản phẩm điện tử tiêu dùng.",
+    "address": "808 Đường 11, Quận 11, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Đồ Chơi L",
+    "desc": "Đồ chơi cho trẻ em và người lớn.",
+    "address": "909 Đường 12, Quận 12, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Nhà Cửa M",
+    "desc": "Nội thất và trang trí cho ngôi nhà.",
+    "address": "111 Đường 13, Quận 1, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Sách N",
+    "desc": "Sách và tài liệu học tập.",
+    "address": "222 Đường 14, Quận 2, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thú Cưng O",
+    "desc": "Sản phẩm cho thú cưng.",
+    "address": "333 Đường 15, Quận 3, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Du Lịch P",
+    "desc": "Đồ dùng và phụ kiện cho du lịch.",
+    "address": "444 Đường 16, Quận 4, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Xe Cộ Q",
+    "desc": "Phụ tùng và phụ kiện cho xe hơi.",
+    "address": "555 Đường 17, Quận 5, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Giáo Dục R",
+    "desc": "Sản phẩm và dịch vụ giáo dục.",
+    "address": "666 Đường 18, Quận 6, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Công Nghệ S",
+    "desc": "Sản phẩm công nghệ mới nhất.",
+    "address": "777 Đường 19, Quận 7, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Giải Trí T",
+    "desc": "Sản phẩm giải trí và sở thích.",
+    "address": "888 Đường 20, Quận 8, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Mẹ và Bé U",
+    "desc": "Sản phẩm cho mẹ và trẻ em.",
+    "address": "999 Đường 21, Quận 9, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Đồ Gia Dụng V",
+    "desc": "Những sản phẩm gia dụng thiết yếu.",
+    "address": "100 Đường 22, Quận 10, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Đồ Chơi Trẻ Em W",
+    "desc": "Đồ chơi an toàn cho trẻ nhỏ.",
+    "address": "200 Đường 23, Quận 11, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Phụ Kiện Thời Trang X",
+    "desc": "Phụ kiện thời trang cho mọi người.",
+    "address": "300 Đường 24, Quận 12, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thực Phẩm Y",
+    "desc": "Thực phẩm sạch và an toàn.",
+    "address": "400 Đường 25, Quận 1, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Nội Thất Z",
+    "desc": "Nội thất cho nhà ở và văn phòng.",
+    "address": "500 Đường 26, Quận 2, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thời Trang Nữ AA",
+    "desc": "Thời trang nữ đẹp và hiện đại.",
+    "address": "600 Đường 27, Quận 3, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thời Trang Nam AB",
+    "desc": "Thời trang nam phong cách.",
+    "address": "700 Đường 28, Quận 4, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Phụ Kiện Ô Tô AC",
+    "desc": "Phụ kiện cho xe hơi.",
+    "address": "800 Đường 29, Quận 5, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Xe Đạp AD",
+    "desc": "Xe đạp và phụ kiện đi kèm.",
+    "address": "900 Đường 30, Quận 6, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thú Cưng AE",
+    "desc": "Sản phẩm cho thú cưng yêu quý.",
+    "address": "1000 Đường 31, Quận 7, TP.HCM",
+    "Images": [],
+    "status": false
+  },
+  {
+    "nameShop": "Shop Thiết Bị Nhà Bếp AF",
+    "desc": "Các thiết bị nhà bếp tiện ích.",
+    "address": "1100 Đường 32, Quận 8, TP.HCM",
+    "Images": [],
+    "status": false
+  }
+]

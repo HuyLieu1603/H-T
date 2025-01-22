@@ -28,6 +28,7 @@ const productSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
+      default: '',
     },
     Images: [
       {
@@ -39,7 +40,8 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
-    status: {
+
+    productStatus: {
       type: String,
       enum: ['Sẵn Sàng', 'Không sẵn sàng'],
       default: 'Sẵn sàng',

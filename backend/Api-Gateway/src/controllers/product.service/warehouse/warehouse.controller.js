@@ -93,4 +93,23 @@ export const warehouseController = {
       success: true,
     });
   },
+  //add category to warehouse
+  addCategoryToWarehouse: async (req, res) => {
+    const { idWarehouse } = req.params;
+    const { idCategory } = req.body;
+    const result = await axios.post(
+      `${process.env.PRODUCT_SERVICE_URL}/warehouse-category/${idWarehouse}`,
+      { idCategory },
+      config,
+    );
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Thêm thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Thêm thành công!',
+      success: true,
+    });
+  },
 };

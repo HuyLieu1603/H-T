@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { HTTP_STATUS } from '../common/http-status.common.js';
 import warehouse from '../models/warehouse.model.js';
 import { warehouseService } from '../service/warehouse.service.js';
