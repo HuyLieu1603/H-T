@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { HTTP_STATUS } from '../common/http-status.common.js';
 import { warehouseService } from '../service/warehouse.service.js';
 
@@ -82,6 +83,24 @@ export const warehouseController = {
       message: 'Tải danh sách kho hàng thành công!',
       success: true,
       data: listWarehouse,
+    });
+  },
+  //addCategoryToWarehouse
+  addCategoryToWarehouse: async (req, res) => {
+    const { idWarehouse } = req.params;
+    const { idCategory } = req.body;
+    const result = await warehouseService.addCategoryToWarehouse(
+      idWarehouse,
+      idCategory,
+    );
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'No',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Ok',
+      success: true,
     });
   },
 };

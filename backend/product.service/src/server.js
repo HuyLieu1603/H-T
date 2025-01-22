@@ -4,6 +4,7 @@ import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 import connectDB from './configs/connect-db.configs.js';
 import rootRoutes from './routes/index.js';
+import morgan from 'morgan';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(
       'http://localhost:4200',
       'http://localhost:3001',
       'http://localhost:8080',
+      'http://localhost:5000',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   }),
@@ -40,12 +42,15 @@ app.listen(port, () => {
   console.log('🚀 ~ app.listen ~ port:', port);
 });
 
+app.use(morgan('dev'));
+
 app.use(async (req, res) => {
   try {
     await func(req, res, next);
   } catch (error) {
+    console.log('🚀 ~ app.use ~ error:', error);
     return res.status(500).json({
-      messase: error.messase,
+      message: error.message,
       success: false,
     });
   }
