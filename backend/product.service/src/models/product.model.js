@@ -43,7 +43,7 @@ const productSchema = new mongoose.Schema(
 
     productStatus: {
       type: String,
-      enum: ['Sẵn Sàng', 'Không sẵn sàng'],
+      enum: ['Sẵn sàng', 'Không sẵn sàng'],
       default: 'Sẵn sàng',
     },
     is_deleted: {

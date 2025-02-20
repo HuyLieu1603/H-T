@@ -64,10 +64,6 @@ namespace Domain.Services
 		public async Task<AuthResponse> ChangePasswordAsync(Guid idUser, ChangePassword req)
 		{
 			var user = await _userRepository.GetUserByIdAsync(idUser);
-			Console.WriteLine(req.NewPassword);
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-			Console.WriteLine(user.Password);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
 			if (user == null)
 				throw new Exception("Tài khoản không tồn tại");
 			if (!BCrypt.Net.BCrypt.Verify(req.Password, user.Password))

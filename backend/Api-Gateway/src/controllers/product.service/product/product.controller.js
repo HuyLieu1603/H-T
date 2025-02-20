@@ -3,29 +3,26 @@ import config from '../../../config.js';
 import { HTTP_STATUS } from '../../../common/http-status.common.js';
 
 export const productController = {
-  createNewproduct: async (req, res) => {
+  createNewProduct: async (req, res) => {
     const data = req.body;
-    console.log(data);
     const result = await axios.post(
       `${process.env.PRODUCT_SERVICE_URL}/product`,
       data,
       config,
     );
-    if (result) {
-      return res.status(HTTP_STATUS.OK).json({
-        message: 'Tạo sản phẩm thành công!',
-        success: true,
-      });
-    } else {
+    if (!result)
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Tạo sản phẩm thẩ bại',
+        message: 'Tạo sản phẩm mới thất bại!',
         success: false,
       });
-    }
+    return res.status(HTTP_STATUS.CREATED).json({
+      message: 'Tạo sản phẩm mới thành công!',
+      success: true,
+      data: result.data,
+    });
   },
   getProductById: async (req, res) => {
     const id = req.params.idProduct;
-    console.log(id);
     const result = await axios.get(
       `${process.env.PRODUCT_SERVICE_URL}/product/${id}`,
     );
@@ -57,9 +54,9 @@ export const productController = {
   },
   updateProductById: async (req, res) => {
     const data = req.body;
-    const { idProduct } = req.params.idProduct;
+    const { idProduct } = req.params;
     const result = await axios.put(
-      `${process.env.PRODUCT_SERVICE_URL}/category/${idProduct}`,
+      `${process.env.PRODUCT_SERVICE_URL}/product/${idProduct}`,
       data,
       config,
     );

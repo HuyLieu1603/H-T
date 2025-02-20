@@ -7,11 +7,13 @@ export const productController = {
     const body = req.body;
     //create
     const newProduct = await productService.createProduct(body);
-    if (newProduct.status) {
-      // if status not Ok return error
-      return res.status(newProduct.status).json(newProduct.body);
+    if (!newProduct) {
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Tạo sản phẩm thất bại!',
+        success: false,
+      });
     }
-    return res.status(HTTP_STATUS.OK).json({
+    return res.status(HTTP_STATUS.CREATED).json({
       message: 'Tạo sản phẩm thành công!',
       success: true,
       data: newProduct,
@@ -56,11 +58,11 @@ export const productController = {
     const result = await productService.updateProduct(idProduct, body);
     if (!result)
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: 'Cập nhật  sản phẩm thất bại!',
+        message: 'Cập nhật sản phẩm thất bại!',
         success: false,
       });
     return res.status(HTTP_STATUS.OK).json({
-      message: 'Cập nhật  sản phẩm thành công!',
+      message: 'Cập nhật sản phẩm thành công!',
       success: true,
       data: result,
     });
@@ -79,10 +81,24 @@ export const productController = {
       success: true,
     });
   },
+  //get list products by shop
+  getListProductByShop: async (req, res) => {
+    const { idShop } = req.body;
+    const listProduct = await productService.fetchListProductByShop(idShop);
+    if (!listProduct)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Không tìm thấy sản phẩm',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Tải sản phẩm thành công!',
+      success: true,
+      data: listProduct,
+    });
+  },
   // get listproducts by idcategory
   getProductByIdCategory: async (req, res) => {
     const { idcategory } = req.params;
-    console.log(idcategory);
     const result = await productService.fetchListProductbyCategory(idcategory);
     if (!result)
       return res.status(HTTP_STATUS.BAD_REQUEST).json({

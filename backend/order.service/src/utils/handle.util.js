@@ -1,12 +1,11 @@
-import { TypeToken } from '../common/type.common.js';
+import { TypeToken } from '../../../product.service/src/common/type.common.js';
 
 export const wrapRequestHandler = (func) => {
   return async (req, res, next) => {
-    //Xử lý bất đồng bộ trong express
     try {
       await func(req, res, next);
     } catch (error) {
-      console.log('🚀 ~ return ~ error:', error);
+      console.log(error);
       res.status(500).json({
         message: error.message,
         success: false,
