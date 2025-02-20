@@ -16,7 +16,7 @@ export const warehouseService = {
       query = {
         $and: [
           {
-            $or: [{ nameWarehouse: { $regax: new RegExp(q), $options: 'i' } }],
+            $or: [{ nameWarehouse: { $regex: new RegExp(q), $options: 'i' } }],
           },
         ],
       };
@@ -24,7 +24,7 @@ export const warehouseService = {
     const option = {
       limit: parseInt(_limit),
       page: parseInt(_page),
-      populate: populateDefault,
+      populate: populate || populateDefault,
       sort: { createdAt: -1 },
     };
     return { option, query };
@@ -41,7 +41,7 @@ export const warehouseService = {
   addCategory: async (idWarehouse, idCategory) => {
     return await warehouse.findByIdAndUpdate(
       { _id: idWarehouse },
-      { listCagory: [idCategory] },
+      { $push: { listCagory: idCategory } },
       { new: true },
     );
   },
@@ -67,7 +67,39 @@ export const warehouseService = {
   },
   //check exist name warehouse
   checkExistName: async (nameWarehouse) => {
-    return warehouse.findOne({ nameWarehouse: nameWarehouse });
+    return await warehouse.findOne({ nameWarehouse: nameWarehouse });
+  },
+  //check exist warehouse in shop
+  checkWarehouseInShop: async (idShop) => {
+    return await warehouse.findOne(idShop);
+  },
+  //add category to warehouse
+  addCategoryToWarehouse: async (idWarehouse, listCategory) => {
+    return await warehouse.findByIdAndUpdate(
+      idWarehouse,
+      {
+        $push: {
+          listCategory: {
+            $each: listCategory,
+          },
+        },
+      },
+      { new: true },
+    );
+  },
+  //delete category in warehouse
+  deleteCategoryInWarehouse: async (idWarehouse, listCagory) => {
+    return await warehouse.findByIdAndUpdate(
+      idWarehouse,
+      {
+        $pull: { listCategory: { idCategory: { $in: listCagory } } },
+      },
+      { new: true },
+    );
+  },
+  //check category is exist in warehouse
+  checkExistCate: async (idWarehouse, idCategory) => {
+    return warehouse.findOne({ _id: idWarehouse, idCategory: idCategory });
   },
 
   addCategoryToWarehouse: async (idWarehouse, idCategory) => {

@@ -6,13 +6,13 @@ import cart from '../models/cart.model.js';
 export const cartController = {
   createCart: async (req, res) => {
     const body = req.body;
-    const id_user = body.id_user;
+    const { idUser } = req.user;
     const product = body.list_product;
 
     // checkuserid
     let userCart;
     try {
-      userCart = await cartService.checkCartUserbyUserID(id_user);
+      userCart = await cartService.checkCartUserbyUserID(idUser);
 
       const idcart = await cartService.getIdCartByIduser(userCart);
 

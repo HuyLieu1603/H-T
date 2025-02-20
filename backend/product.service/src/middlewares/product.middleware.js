@@ -4,7 +4,6 @@ import { productValidation } from '../validation/product.validation.js';
 export const productMiddleware = async (req, res, next) => {
   const body = req.body;
   //validate
-  console.log(body);
   const { error } = productValidation.validate(body, { abortEarly: false });
   if (error) {
     const errors = error.details.map((item) => item.message);
@@ -13,7 +12,5 @@ export const productMiddleware = async (req, res, next) => {
       success: false,
     });
   }
-  
-
   next();
 };

@@ -33,4 +33,12 @@ router.put(
   wrapRequestHandler(verifyToken),
   wrapRequestHandler(userController.updateUserById),
 );
+
+//change password for user
+router.put(
+  '/change-password/:idUser',
+  wrapRequestHandler(verifyToken),
+  wrapRequestHandler(authController.changePassword),
+);
+
 export default router;

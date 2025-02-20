@@ -21,4 +21,8 @@ export const categoryService = {
   deleteCategory: async (idCategory) => {
     return await category.findByIdAndDelete(idCategory);
   },
+  //check exist
+  isExistCategory: async (idCategory) => {
+    return await category.findById(idCategory);
+  },
 };

@@ -8,9 +8,13 @@ using user.src.Infrastructure.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add port 5179
+builder.WebHost.ConfigureKestrel(options =>
+{
+	options.ListenAnyIP(5179);
+});
+
 builder.Services.AddDbContext<AppDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 
 // Add services to the container
 builder.Services.AddControllers();

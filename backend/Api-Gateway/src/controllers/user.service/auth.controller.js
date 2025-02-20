@@ -33,8 +33,6 @@ export const authController = {
       body,
       config,
     );
-    console.log('Response data:', result.data);
-    console.log('Response headers:', result.headers);
     if (!result)
       return res.status(HTTP_STATUS.BAD_REQUEST).json({
         message: 'Đăng ký thất bại!',
@@ -42,6 +40,27 @@ export const authController = {
       });
     return res.status(HTTP_STATUS.CREATED).json({
       message: 'Đăng ký thành công',
+      success: true,
+      data: result.data,
+    });
+  },
+  //Change password for user
+  changePassword: async (req, res) => {
+    const { idUser } = req.params;
+    const data = req.body;
+
+    const result = await axios.put(
+      `${process.env.USER_SERVICE_URL}/change-password/${idUser}`,
+      data,
+      config,
+    );
+    if (!result)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Đổi mật khẩu thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Đổi mật khẩu thành công!',
       success: true,
       data: result.data,
     });

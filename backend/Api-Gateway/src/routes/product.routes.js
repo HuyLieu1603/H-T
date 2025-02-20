@@ -8,20 +8,25 @@ import { wrapRequestHandler } from '../utils/handle-util.js';
 import { productController } from '../controllers/product.service/product/product.controller.js';
 
 const router = express.Router();
-
+//Create product
 router.post(
   '/product/create',
   wrapRequestHandler(verifyToken),
-  wrapRequestHandler(productController.createNewproduct),
+  wrapRequestHandler(productController.createNewProduct),
 );
+//GET: product by id
 router.get(
   '/product/:idProduct',
   wrapRequestHandler(productController.getProductById),
 );
+//GET: List product 
 router.get(
   '/listProduct',
   wrapRequestHandler(productController.fetchListProduct),
 );
+//GET: list product by shop
+
+//GET: list product 
 router.put(
   '/product/:idProduct',
   wrapRequestHandler(verifyToken),

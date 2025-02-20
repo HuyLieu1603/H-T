@@ -6,6 +6,7 @@ export const wrapRequestHandler = (func) => {
     try {
       await func(req, res, next);
     } catch (error) {
+      console.log('🚀 ~ return ~ error:', error);
       res.status(500).json({
         message: error.message,
         success: false,

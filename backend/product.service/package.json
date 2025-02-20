@@ -22,6 +22,7 @@
     "mongoose-paginate-v2": "^1.8.5",
     "morgan": "^1.10.0",
     "product.service": "file:",
+    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {

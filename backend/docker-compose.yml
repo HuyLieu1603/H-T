@@ -1,0 +1,70 @@
+services:
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+    environment:
+      - EG_PROJECT_NAME=api-gateway
+
+  user-service:
+    build:
+      context: ./user.service/user
+    ports:
+      - "5179:5179"
+    networks:
+      - app-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # - DB_CONNECTION_STRING=Server=localhost,1433;Database=UserService;User Id=sa;Password=${SQL_PASSWORD};Encrypt=false;TrustServerCertificate=true;
+    # depends_on:
+    #   - database-sqlserver
+    restart: always
+
+  product-service:
+    build:
+      context: ./product.service
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  database-mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+
+  database-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+    environment:
+       ACCEPT_EULA: "Y"
+       SA_PASSWORD: "${SQL_PASSWORD}"
+       MSSQL_DATABASE: UserService
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+networks:
+  app-network:
+    driver: bridge
+    
+volumes:
+  sqlserver_data:
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   o: bind
+    #   device: D:\HuyLieu\H-T-SmartShop\H-T\SQL

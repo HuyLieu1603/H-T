@@ -4,6 +4,7 @@ import { wrapRequestHandler } from '../utils/handle.util.js';
 import express from 'express';
 
 const router = express.Router();
+
 router.post(
   '/product',
   wrapRequestHandler(productMiddleware),
@@ -30,7 +31,7 @@ router.delete(
   '/product/:idProduct',
   wrapRequestHandler(productController.deleteProduct),
 );
-//Get : fetcg list product by idCategory
+//Get : fetch list product by idCategory
 router.get(
   '/product/:idcategory',
   wrapRequestHandler(productController.getProductByIdCategory),
