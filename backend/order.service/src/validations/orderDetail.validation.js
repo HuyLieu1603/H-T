@@ -1,6 +1,6 @@
 import joi from 'joi';
 import mongoose from 'mongoose';
-import product from '../../../product.service/src/models/product.model';
+import product from '../../../product.service/src/models/product.model.js';
 
 export const orderDetailValidation = joi.object({
   idCustomer: joi.string().required().messages({
