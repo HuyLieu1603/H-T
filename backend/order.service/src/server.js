@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
+import connectDB from '../src/configs/connect-db.configs.js';
+import rootRoutes from '../src/routes/index.js';
 
 dotenv.config();
 
@@ -18,6 +20,7 @@ app.use(
       'http://localhost:8080',
       'http://localhost:5179',
       'http://localhost:1433',
+      'http://localhost:5001',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   }),
@@ -27,7 +30,9 @@ app.get('/', (_, res) => {
   res.send('hello world');
 });
 
-app.use(`/api/v3`);
+connectDB;
+
+app.use(`/api/v3`, rootRoutes);
 
 //start server
 
