@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../api/auth.js';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import '../styles/Login.css';
+import { login } from '../../api/auth.js';
+import Input from '../../components/Input.js';
+import Button from '../../components/Button.js';
+import '../../styles/Login.css';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
