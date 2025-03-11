@@ -32,4 +32,13 @@ export const orderDetailService = {
       new: true,
     });
   },
+  //edit status order detail
+  editStatusOrderDetail: async (id, status) => {
+    return await orderDetail.findByIdAndUpdate(
+      { _id: id },
+      { statusOrder: status },
+      { new: true },
+    );
+  },
+  //Edit delivery information
 };

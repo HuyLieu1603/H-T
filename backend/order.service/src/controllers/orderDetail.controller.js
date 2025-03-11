@@ -17,6 +17,24 @@ export const orderDetailController = {
       data: newOrderDetail,
     });
   },
+
+  //edit orderDetail
+  editOrderDetailById: async (req, res) => {
+    const data = req.body;
+    const editOrder = await orderDetailService.editOrderDetail(data);
+
+    if (!editOrder)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Chỉnh sửa đơn hàng thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Chỉnh sửa đơn hàng thành công',
+      success: true,
+      data: editOrder,
+    });
+  },
+
   //get order detail by id
   getOrderDetailById: async (req, res) => {
     const { id } = req.body;
@@ -33,7 +51,8 @@ export const orderDetailController = {
       data: orderDetail,
     });
   },
-  //fetch list order detail
+
+  //fetch list order detail by user
   fetchListOrderDetail: async (req, res) => {
     const { UserId } = req.user;
     //fetch
@@ -51,4 +70,26 @@ export const orderDetailController = {
       data: listOrderDetail,
     });
   },
+
+  //edit status order detail
+  editStatusOrderDetailById: async (req, res) => {
+    const { idOrder, statuOrder } = req.body;
+
+    const newStatus = await orderDetailController.editStatusOrderDetailById(
+      idOrder,
+      statuOrder,
+    );
+
+    if (!newStatus)
+      return res.status(HTTP_STATUS.BAD_REQUEST).json({
+        message: 'Chỉnh sửa trạng thái đơn hàng thất bại!',
+        success: false,
+      });
+    return res.status(HTTP_STATUS.OK).json({
+      message: 'Chỉnh sửa trạng thái đơn hàng thành công!',
+      success: true,
+      data: newStatus,
+    });
+  },
+  //
 };
