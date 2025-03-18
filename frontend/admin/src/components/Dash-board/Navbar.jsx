@@ -1,7 +1,8 @@
 const Navbar = () => {
 	return (
 		<div className="navbar">
-			<button>Log out</button>
+			<span>Admin Dashboard</span>
+			<button>Logout</button>
 		</div>
 	);
 };

@@ -9,10 +9,11 @@ import {
 	PieChartOutlined,
 } from '@ant-design/icons';
 import { Button, Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
 	{
-		key: '1',
+		key: '/Admin/Login',
 		icon: <PieChartOutlined />,
 		label: 'Dashboard',
 	},
@@ -22,9 +23,9 @@ const items = [
 		label: 'User Manage',
 	},
 	{
-		key: '3',
+		key: '/admin/products',
 		icon: <ContainerOutlined />,
-		label: 'Order',
+		label: 'Product',
 	},
 	{
 		key: 'sub1',
@@ -81,17 +82,19 @@ const items = [
 ];
 const MenuLayout = () => {
 	const [collapsed, setCollapsed] = useState(false);
+	const navigate = useNavigate();
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
+
+	//Handle navigate event
+	const handleClick = ({ key }) => {
+		navigate(key);
+	};
+
 	return (
-		<div
-			style={{
-				height: '100vh',
-				width: '100vh',
-			}}
-		>
-			{/* <Button
+		<div>
+			<Button
 				type="primary"
 				onClick={toggleCollapsed}
 				style={{
@@ -99,14 +102,15 @@ const MenuLayout = () => {
 				}}
 			>
 				{collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-			</Button> */}
+			</Button>
 			<Menu
 				defaultSelectedKeys={['1']}
 				defaultOpenKeys={['sub1']}
-				mode="horizontal"
+				mode="inline"
 				theme="dark"
 				inlineCollapsed={collapsed}
 				items={items}
+				onClick={handleClick}
 			/>
 		</div>
 	);

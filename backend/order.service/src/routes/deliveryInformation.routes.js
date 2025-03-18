@@ -21,5 +21,16 @@ router.put(
 	wrapRequestHandler(deliveryInformationController.updateDeliveryInforById),
 );
 //GET DETAIL
-
+router.get(
+	'/delivery-information',
+	wrapRequestHandler(verifyToken),
+	wrapRequestHandler(deliveryInformationController.getDeliveryInforById),
+);
 //GET LIST
+router.get(
+	'/delivery-information-list',
+	wrapRequestHandler(verifyToken),
+	wrapRequestHandler(deliveryInformationController.getListDeliveryInforByUser),
+);
+
+export default router;

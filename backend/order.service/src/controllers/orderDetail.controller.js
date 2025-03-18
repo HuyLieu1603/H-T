@@ -107,6 +107,7 @@ export const orderDetailController = {
 			data: newStatus,
 		});
 	},
+
 	//edit delivery information
 	editDeliveryInfor: async (req, res) => {
 		const { _id, idDeliveryInfor } = req.body;

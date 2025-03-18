@@ -1,19 +1,11 @@
-import { Link } from 'react-router-dom';
+import '../styles/sidebar.css';
 
 const Sidebar = () => {
-  return (
-    <div className="sidebar">
-      <h1>Admin Panel</h1>
-      <ul>
-        <li>
-          <Link to="/">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/">Users</Link>
-        </li>
-      </ul>
-    </div>
-  );
+	return (
+		<div className="sidebar">
+			<h1>Admin Panel</h1>
+		</div>
+	);
 };
 
 export default Sidebar;

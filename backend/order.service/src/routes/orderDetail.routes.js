@@ -8,16 +8,16 @@ const router = express.Router();
 
 //Create order detail
 router.post(
-  '/order-detail',
-  wrapRequestHandler(verifyToken),
-  wrapRequestHandler(orderDetailMiddleware),
-  wrapRequestHandler(orderDetailController.createOrderDetail),
+	'/order-detail',
+	wrapRequestHandler(verifyToken),
+	wrapRequestHandler(orderDetailMiddleware),
+	wrapRequestHandler(orderDetailController.createOrderDetail),
 );
 
 //Get order detail
 router.get(
-  '/order-detail',
-  wrapRequestHandler(orderDetailController.getOrderDetailById),
+	'/order-detail',
+	wrapRequestHandler(orderDetailController.getOrderDetailById),
 );
 
 export default router;
